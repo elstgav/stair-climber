@@ -32,6 +32,7 @@
   "scripts": {
     "dev": "webpack-dev-server --config ./webpack-development.config.js --hot --progress --colors --content-base public/",
     "build": "find public -type f -not -name 'index.html' | xargs rm; webpack --config ./webpack-production.config.js --progress --colors",
-    "start": "node server.js"
+    "start": "node server.js",
+    "postinstall": "npm run build"
   }
 }
