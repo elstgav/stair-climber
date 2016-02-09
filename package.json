@@ -2,9 +2,13 @@
   "name": "stair-climber",
   "version": "0.0.1",
   "description": "Track your stair climbing at Avvo",
-  "author": "Gavin Elster",
-  "repository": "git@github.com:elstgav/stair-climber.git",
+  "homepage": "http://stair-climber.herokuapp.com/",
+  "author": "Gavin Elster <gavin.elster@me.com>",
   "license": "MIT",
+  "repository": "git@github.com:elstgav/stair-climber.git",
+  "bugs": {
+    "url": "https://github.com/elstgav/stair-climber/issues"
+  },
   "main": "app/index.jsx",
   "dependencies": {
     "babel": "^6.3.26",
@@ -34,5 +38,6 @@
     "build": "find public -type f -not -name 'index.html' | xargs rm; webpack --config ./webpack-production.config.js --progress --colors",
     "start": "node server.js",
     "postinstall": "npm run build"
-  }
+  },
+  "private": true
 }
