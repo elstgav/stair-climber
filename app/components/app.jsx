@@ -69,21 +69,7 @@ const App = React.createClass({
 
         {this.entryForm()}
 
-        <h2>Total</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Flights</th>
-              <th>Elevation</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{this.totalFlights()} flights</td>
-              <td>{this.totalElevation()} feet</td>
-            </tr>
-          </tbody>
-        </table>
+        <Leaderboard people={People} flightTracker={FlightTracker}/>
       </div>
     )
   }
