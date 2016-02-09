@@ -1,19 +1,19 @@
 import React from 'react'
 import moment from 'moment'
 
-import FlightTracker from '../data/flight-tracker'
+import FlightTracker from '../stores/flight-tracker'
+import People from '../stores/people'
 
 import DatePicker from './date-picker'
 import FlightsForm from './flights-form'
+import Leaderboard from './leaderboard'
 
-const FEET_PER_FLIGHT = 13
 
 const App = React.createClass({
   getInitialState() {
     return {
       entryDate: moment(),
-      homeFloor: 15,
-      flightsClimbed: new FlightTracker()
+      person: null
     }
   },
 
@@ -24,34 +24,51 @@ const App = React.createClass({
   },
 
   onFlightsChanged(flights) {
-    this.state.flightsClimbed.set(this.state.entryDate, flights)
+    this.state.person.flightsClimbed.set(this.state.entryDate, flights)
     this.setState({
-      flightsClimbed: this.state.flightsClimbed
+      person: this.state.person
     })
   },
 
-  totalFlights() {
-    return this.state.flightsClimbed.total()
+  onPersonChanged(event) {
+    let personId = parseInt(event.target.value)
+    this.setState({
+      person: People.get(personId)
+    })
   },
 
-  totalElevation() {
-    return this.totalFlights() * FEET_PER_FLIGHT
-  },
-
-  render() {
+  entryForm() {
+    if (!this.state.person) return
     return (
       <div>
-        <h1>Stair Climber</h1>
         <h2>{this.state.entryDate.format('dddd')}</h2>
         <DatePicker
           selected={this.state.entryDate}
           onChange={this.onEntryDateChanged}
         />
         <FlightsForm
-          homeFloor={this.state.homeFloor}
-          value={this.state.flightsClimbed.get(this.state.entryDate)}
+          homeFloor={this.state.person.homeFloor}
+          value={this.state.person.flightsClimbed.get(this.state.entryDate)}
           onChange={this.onFlightsChanged}
         />
+      </div>
+    )
+  },
+
+  render() {
+    return (
+      <div>
+        <h1>Stair Climber</h1>
+
+        <select value={this.person} onChange={this.onPersonChanged}>
+          <option>Select a person…</option>
+          {People.map((person) => {
+            return <option key={person.id} value={person.id}>{person.fullName}</option>
+          })}
+        </select>
+
+        {this.entryForm()}
+
         <h2>Total</h2>
         <table>
           <thead>

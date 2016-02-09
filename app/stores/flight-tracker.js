@@ -1,7 +1,8 @@
 import moment from 'moment'
 const DATE_FORMAT = 'YYYY-MM-DD'
+const FEET_PER_FLIGHT = 13
 
-export default class FlightTracker {
+class PersonFlights {
   constructor() {
     this.store = new Map()
   }
@@ -28,9 +29,42 @@ export default class FlightTracker {
     return self
   }
 
-  total() {
+  totalFlights() {
     let flightTotal = 0
     this.store.forEach((val) => flightTotal += val)
     return flightTotal
   }
+
+  totalElevation() {
+    return this.totalFlights() * FEET_PER_FLIGHT
+  }
 }
+
+
+class FlightTracker {
+  constructor() {
+    this.store = new Map()
+  }
+
+  new(person) {
+    let flightsClimbed = new PersonFlights()
+    this.store.set(person.id, flightsClimbed)
+    return flightsClimbed
+  }
+
+  get(person) {
+    return this.store.get(person)
+  }
+
+  totalFlights() {
+    let flightsTotal = 0
+    this.store.forEach((val) => flightsTotal += val.totalFlights())
+    return flightsTotal
+  }
+
+  totalElevation() {
+    return this.totalFlights() * FEET_PER_FLIGHT
+  }
+}
+
+export default new FlightTracker()
