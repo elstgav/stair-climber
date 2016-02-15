@@ -62,9 +62,9 @@ const App = React.createClass({
 
         <select value={this.person} onChange={this.onPersonChanged}>
           <option>Select a person…</option>
-          {People.map((person) => {
-            return <option key={person.id} value={person.id}>{person.fullName}</option>
-          })}
+          {People.map(person =>
+            <option key={person.id} value={person.id}>{person.fullName}</option>
+          )}
         </select>
 
         {this.entryForm()}

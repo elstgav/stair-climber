@@ -32,7 +32,7 @@ class PersonFlights {
 
   totalFlights() {
     let flightTotal = 0
-    this.store.forEach((val) => flightTotal += val)
+    this.store.forEach(val => flightTotal += val)
     return flightTotal
   }
 
@@ -59,7 +59,7 @@ class FlightTracker {
 
   totalFlights() {
     let flightsTotal = 0
-    this.store.forEach((val) => flightsTotal += val.totalFlights())
+    this.store.forEach(val => flightsTotal += val.totalFlights())
     return flightsTotal
   }
 

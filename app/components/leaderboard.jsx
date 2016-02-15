@@ -4,7 +4,7 @@ import _ from 'lodash'
 const Leaderboard = React.createClass({
   sortedPeople() {
     return _(this.props.people.getAll())
-      .sortBy((p) => p.flightsClimbed.totalFlights())
+      .sortBy(p => p.flightsClimbed.totalFlights())
       .reverse()
       .value()
   },
