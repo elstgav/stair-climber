@@ -1,6 +1,5 @@
 import FlightTracker from './flight-tracker'
 
-
 class Person {
   constructor(data) {
     this.id        = data.id

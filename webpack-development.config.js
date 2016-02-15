@@ -1,5 +1,4 @@
 const _ = require('lodash')
-const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const prodConfig = require('./webpack-production.config')
 

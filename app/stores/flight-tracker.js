@@ -1,4 +1,5 @@
 import moment from 'moment'
+
 const DATE_FORMAT = 'YYYY-MM-DD'
 const FEET_PER_FLIGHT = 13
 
@@ -12,7 +13,7 @@ class PersonFlights {
   }
 
   set(date=moment(), flights=0) {
-    if (flights < 0) flights = 0;
+    if (flights < 0) flights = 0
     this.store.set(date.format(DATE_FORMAT), flights)
     return self
   }
