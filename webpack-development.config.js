@@ -1,5 +1,6 @@
 const _ = require('lodash')
 const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const prodConfig = require('./webpack-production.config')
 
 module.exports = _.extend({}, prodConfig, {
@@ -14,7 +15,11 @@ module.exports = _.extend({}, prodConfig, {
     './app/index.jsx'
   ],
 
-  plugins: [],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './app/index.html'
+    })
+  ],
 
   module: {
     loaders: prodConfig.module.loaders.concat({
