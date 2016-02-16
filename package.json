@@ -55,7 +55,7 @@
     "build":       "webpack --progress --colors",
     "lint":        "eslint .",
     "start":       "node server.js",
-    "postinstall": "npm run build"
+    "postinstall": "if [ -z "$DYNO" ]; then npm run build; fi"
   },
 
   "private": true
