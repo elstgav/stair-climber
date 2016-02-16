@@ -3,7 +3,7 @@ var path    = require('path')
 
 var app = express()
 
-var static_path = path.join(__dirname, './public')
+var static_path = path.join(__dirname, './dist')
 
 
 
