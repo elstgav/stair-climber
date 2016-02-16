@@ -1,6 +1,6 @@
-const _ = require('lodash')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const prodConfig = require('./webpack-production.config')
+var _ = require('lodash')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+var prodConfig = require('./webpack.config')
 
 module.exports = _.extend({}, prodConfig, {
   devtool: 'eval',
