@@ -1,20 +1,28 @@
-var path = require('path')
 var webpack = require('webpack')
+var CleanPlugin = require('clean-webpack-plugin')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
+  cache: true,
+
   context: __dirname,
+
   devtool: 'source-map',
 
-  entry: './app/index.jsx',
+  entry: './client/app.jsx',
 
   output: {
-    path: './public',
+    path: './dist',
     publicPath: '/',
-    filename: 'app-bundle.js'
+    filename: 'app.[hash].js'
   },
 
   plugins: [
+    // Clean
+    new CleanPlugin(['dist']),
+
+    // Optimize
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: false,
@@ -22,8 +30,21 @@ module.exports = {
         warnings: false
       }
     }),
+
+    // Extract CSS
+    new ExtractTextPlugin('style.[hash].css'),
+
+    // Meta, debug info.
+    new webpack.DefinePlugin({
+      'process.env': {
+        // Signal production mode for React JS libs.
+        NODE_ENV: JSON.stringify('production')
+      }
+    }),
+
+    // Generate HTML
     new HtmlWebpackPlugin({
-      template: './app/index.html'
+      template: './client/index.html'
     })
   ],
 
@@ -34,21 +55,17 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel',
         query: {
-          presets: ['react', 'es2015']
+          presets:  ['react', 'es2015']
         }
       },
       {
         test: /\.scss$/,
-        loaders: ['style', 'css', 'sass']
+        loaders: ExtractTextPlugin.extract('style', 'css', 'sass')
       }
     ]
   },
 
   resolve: {
-    extensions: ['', '.js', '.jsx', '.css'],
-    root: [
-      path.join(__dirname, 'node_modules'),
-      path.join(__dirname, 'app')
-    ]
+    extensions: ['', '.js', '.jsx', '.css']
   }
 }

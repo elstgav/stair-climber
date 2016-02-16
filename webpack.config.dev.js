@@ -1,8 +1,13 @@
-var _ = require('lodash')
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin')
-var prodConfig = require('./webpack.config')
 
-module.exports = _.extend({}, prodConfig, {
+var base = require('./webpack.config')
+
+module.exports = {
+  cache: true,
+
+  context: base.context,
+
   devtool: 'eval',
 
   entry: [
@@ -10,18 +15,28 @@ module.exports = _.extend({}, prodConfig, {
     'webpack-dev-server/client?http://localhost:8080',
     // "only" prevents reload on syntax errors
     'webpack/hot/only-dev-server',
-    // our entry file
-    './app/index.jsx'
+
+    base.entry
   ],
 
+  output: {
+    path:       base.output.path,
+    publicPath: base.output.publicPath,
+    filename:   'app.js'
+  },
+
   plugins: [
+    // Extract CSS
+    new ExtractTextPlugin('style.[hash].css'),
+
+    // Generate HTML
     new HtmlWebpackPlugin({
-      template: './app/index.html'
+      template: './client/index.html'
     })
   ],
 
   module: {
-    loaders: prodConfig.module.loaders.concat({
+    loaders: base.module.loaders.concat({
       test: /\.jsx?$/,
       exclude: /node_modules/,
       loaders: [
@@ -29,5 +44,7 @@ module.exports = _.extend({}, prodConfig, {
         'babel?presets[]=react,presets[]=es2015'
       ]
     })
-  }
-})
+  },
+
+  resolve: base.resolve
+}

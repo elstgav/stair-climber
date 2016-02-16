@@ -1,6 +1,6 @@
-import React from 'react'
-import { render } from 'react-dom'
+import React from 'react' // eslint-disable-line no-unused-vars
+import ReactDOM from 'react-dom'
 
 import App from './components/app'
 
-render(<App />, document.getElementById('app'))
+ReactDOM.render(<App />, document.getElementById('app'))
