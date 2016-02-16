@@ -37,8 +37,8 @@
     "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
-    "dev": "webpack-dev-server --config ./webpack-development.config.js --hot --progress --colors --content-base public/",
-    "build": "find public -type f -not -name 'index.html' | xargs rm; webpack --config ./webpack-production.config.js --progress --colors",
+    "dev":         "webpack-dev-server --config ./webpack.config.dev.js --hot --progress --colors --content-base public/",
+    "build":       "webpack --progress --colors",
     "lint": "eslint .",
     "start": "node server.js",
     "postinstall": "npm run build"
