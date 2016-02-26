@@ -39,7 +39,7 @@ PreCommit:
 
   EsLint:
     enabled: true
-    on_warn: pass
+    on_warn: fail
     required_executable: './node_modules/.bin/eslint'
     flags: ['--quiet', '--format=compact']
     install_command: 'npm install'
