@@ -1,12 +1,12 @@
 import React from 'react'
 import moment from 'moment'
 
-import FlightTracker from '../stores/flight-tracker'
-import People from '../stores/people'
+import FlightTracker from '../redux/stores/FlightTracker'
+import People from '../redux/stores/People'
 
-import DatePicker from './date-picker'
-import FlightsForm from './flights-form'
-import Leaderboard from './leaderboard'
+import DatePicker from './DatePicker'
+import FlightsForm from './FlightsForm'
+import Leaderboard from './Leaderboard'
 
 
 const App = React.createClass({

@@ -1,4 +1,4 @@
-import FlightTracker from './flight-tracker'
+import FlightTracker from './FlightTracker'
 
 class Person {
   constructor(data) {
