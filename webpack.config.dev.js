@@ -1,6 +1,3 @@
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-
 var base = require('./webpack.config.prod')
 
 module.exports = {
@@ -25,15 +22,7 @@ module.exports = {
     filename:   'app.js'
   },
 
-  plugins: [
-    // Extract CSS
-    new ExtractTextPlugin('style.[hash].css'),
-
-    // Generate HTML
-    new HtmlWebpackPlugin({
-      template: './client/index.html'
-    })
-  ],
+  plugins: [],
 
   module: {
     loaders: base.module.loaders.concat({

@@ -1,8 +1,5 @@
 var webpack = require('webpack')
 var CleanPlugin = require('clean-webpack-plugin')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-
 module.exports = {
   cache: true,
 
@@ -15,7 +12,7 @@ module.exports = {
   output: {
     path: './public',
     publicPath: '/',
-    filename: 'app.[hash].js'
+    filename: 'app.js'
   },
 
   plugins: [
@@ -32,20 +29,12 @@ module.exports = {
       }
     }),
 
-    // Extract CSS
-    new ExtractTextPlugin('style.[hash].css'),
-
     // Meta, debug info.
     new webpack.DefinePlugin({
       'process.env': {
         // Signal production mode for React JS libs.
         NODE_ENV: JSON.stringify('production')
       }
-    }),
-
-    // Generate HTML
-    new HtmlWebpackPlugin({
-      template: './client/index.html'
     })
   ],
 
@@ -58,10 +47,6 @@ module.exports = {
         query: {
           presets:  ['react', 'es2015']
         }
-      },
-      {
-        test: /\.scss$/,
-        loaders: ExtractTextPlugin.extract('style', 'css', 'sass')
       }
     ]
   },

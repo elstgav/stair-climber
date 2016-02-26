@@ -40,8 +40,6 @@
 
     "webpack":                     "^1.12.11",
     "clean-webpack-plugin":        "^0.1.8",
-    "extract-text-webpack-plugin": "^1.0.1",
-    "html-webpack-plugin":         "^2.8.1",
 
     "babel-loader":                "^6.2.1",
     "css-loader":                  "^0.23.1",
