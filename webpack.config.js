@@ -13,14 +13,14 @@ module.exports = {
   entry: './client/app.jsx',
 
   output: {
-    path: './dist',
+    path: './public',
     publicPath: '/',
     filename: 'app.[hash].js'
   },
 
   plugins: [
     // Clean
-    new CleanPlugin(['dist']),
+    new CleanPlugin(['public']),
 
     // Optimize
     new webpack.optimize.DedupePlugin(),

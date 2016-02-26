@@ -3,16 +3,14 @@ var path    = require('path')
 
 var app = express()
 
-var static_path = path.join(__dirname, './dist')
+var static_path = path.join(__dirname, './public')
+
+app.use(express.static(static_path))
 
 
-
-app.get('/', function(req, res) {
-  res.sendFile('index.html', {
-    root: static_path
-  })
+app.get('*', function(req, res) {
+  res.sendFile(path.join(static_path, 'index.html'))
 })
 
-app.use('/', express.static(static_path))
 
 app.listen(process.env.PORT || 8080)
