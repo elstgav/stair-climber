@@ -1,7 +1,7 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
-var base = require('./webpack.config')
+var base = require('./webpack.config.prod')
 
 module.exports = {
   cache: true,

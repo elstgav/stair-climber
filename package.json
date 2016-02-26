@@ -51,8 +51,8 @@
   },
 
   "scripts": {
-    "dev":         "webpack-dev-server --config ./webpack.config.dev.js --hot --progress --colors --content-base public/",
-    "build":       "webpack --progress --colors",
+    "dev":         "NODE_ENV=development node index.js",
+    "build":       "NODE_ENV=production webpack --config webpack.config.prod.js && npm run minify",
     "lint":        "eslint .",
     "start":       "node server.js",
     "postinstall": "if [ \"$NODE_ENV\" = \"production\" ]; then npm run build; fi"
