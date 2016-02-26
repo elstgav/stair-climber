@@ -19,19 +19,20 @@
     "babel-preset-react":  "^6.3.13",
 
     "express":             "^4.13.4",
+    "compression":         "^1.6.1",
+
+    "if-env":              "^1.0.0",
+    "node-sass":           "^3.4.2",
+
+    "lodash":              "^4.3.0",
+    "moment":              "^2.11.1",
+
+    "react":               "^0.14.6",
+    "react-dom":           "^0.14.6",
 
     "clean-webpack-plugin":        "^0.1.8",
     "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin":         "^2.8.1",
-
-    "lodash":              "^4.3.0",
-
-    "moment":              "^2.11.1",
-
-    "node-sass":           "^3.4.2",
-
-    "react":               "^0.14.6",
-    "react-dom":           "^0.14.6",
 
     "webpack":             "^1.12.11",
     "babel-loader":        "^6.2.1",
@@ -51,11 +52,11 @@
   },
 
   "scripts": {
-    "dev":         "webpack-dev-server --config ./webpack.config.dev.js --hot --progress --colors --content-base public/",
     "build":       "webpack --progress --colors",
     "lint":        "eslint .",
-    "start":       "node server.js",
-    "postinstall": "if [ \"$NODE_ENV\" = \"production\" ]; then npm run build; fi"
+    "start":       "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:dev":   "webpack-dev-server --config ./webpack.config.dev.js --hot --progress --colors --content-base public/",
+    "start:prod":  "npm run build && node server.js"
   },
 
   "private": true
