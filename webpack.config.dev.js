@@ -1,11 +1,12 @@
 var base = require('./webpack.config.prod')
+var webpack = require('webpack')
 
 module.exports = {
   cache: true,
 
   context: base.context,
 
-  devtool: 'eval',
+  devtool: 'cheap-module-eval-source-map',
 
   entry: [
     // Setup hot module loading
@@ -16,13 +17,15 @@ module.exports = {
     base.entry
   ],
 
-  output: {
-    path:       base.output.path,
-    publicPath: base.output.publicPath,
-    filename:   'app.js'
-  },
+  output: base.output,
 
-  plugins: [],
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('development')
+      }
+    })
+  ],
 
   module: {
     loaders: base.module.loaders.concat({
