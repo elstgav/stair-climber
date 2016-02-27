@@ -1,5 +1,5 @@
 import { Route, IndexRoute } from 'react-router'
-import React from 'react' // eslint-disable-line no-unused-vars
+import React from 'react'
 import App from './container/App'
 import Home from './container/Home'
 // import PostDetailView from './container/PostDetailView'

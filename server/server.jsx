@@ -11,7 +11,7 @@ import * as database from './initializers/database'
 // import posts from '../api/routes/post.routes'
 
 // React And Redux Setup
-import React from 'react' // eslint-disable-line no-unused-vars
+import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { configureStore } from '../client/redux/stores/configureStore'
 import { Provider } from 'react-redux'

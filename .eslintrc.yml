@@ -8,6 +8,10 @@ rules:
     - 2
     - unix
 
+  no-unused-vars:
+    - 2
+    - varsIgnorePattern: '(React|mocha)'
+
   quotes:
     - 2
     - single
@@ -18,9 +22,10 @@ rules:
     - never
 
 env:
-  es6: true
+  es6:     true
   browser: true
-  node: true
+  node:    true
+  mocha:   true
 
 extends: 'eslint:recommended'
 
