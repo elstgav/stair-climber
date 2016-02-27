@@ -10,7 +10,7 @@ module.exports = {
 
   entry: [
     // Setup hot module loading
-    'webpack-dev-server/client?http://localhost:8080',
+    'webpack-hot-middleware/client',
     // "only" prevents reload on syntax errors
     'webpack/hot/only-dev-server',
 
@@ -20,6 +20,7 @@ module.exports = {
   output: base.output,
 
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('development')
@@ -31,10 +32,7 @@ module.exports = {
     loaders: base.module.loaders.concat({
       test: /\.jsx?$/,
       exclude: /node_modules/,
-      loaders: [
-        'react-hot',
-        'babel?presets[]=react,presets[]=es2015'
-      ]
+      loader: 'babel?presets[]=react-hmre'
     })
   },
 
