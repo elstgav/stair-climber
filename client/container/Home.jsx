@@ -2,14 +2,14 @@ import React from 'react'
 import moment from 'moment'
 
 import FlightTracker from '../redux/stores/FlightTracker'
-import People from '../redux/stores/People'
+import People        from '../redux/stores/People'
 
-import DatePicker from './DatePicker'
-import FlightsForm from './FlightsForm'
-import Leaderboard from './Leaderboard'
+import DatePicker    from '../components/DatePicker'
+import FlightsForm   from '../components/FlightsForm'
+import Leaderboard   from '../components/Leaderboard'
 
 
-const App = React.createClass({
+export default React.createClass({
   getInitialState() {
     return {
       entryDate: moment(),
@@ -74,5 +74,3 @@ const App = React.createClass({
     )
   }
 })
-
-export default App

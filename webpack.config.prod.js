@@ -11,8 +11,8 @@ module.exports = {
   entry: './client/index.jsx',
 
   output: {
-    path: './public',
-    publicPath: './public/',
+    path: __dirname + '/public/',
+    publicPath: '/',
     filename: 'app.js'
   },
 

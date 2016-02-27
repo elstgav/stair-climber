@@ -62,7 +62,7 @@ app.use((req, res) => {
     if (redirect) return res.redirect(redirect.pathname + redirect.search)
     if (!props)   return res.status(404).end('Not found!')
 
-    const store = configureStore({ posts: [], post: {} })
+    const store = configureStore()
 
     fetchComponentData(store.dispatch, props.components, props.params)
       .then(() => {
@@ -83,7 +83,7 @@ app.use((req, res) => {
 // start app
 app.listen(config.port, (error) => {
   if (!error) {
-    console.log(`Running on port ${config.port}`) // eslint-disable-line
+    console.log(`Listening on localhost:${config.port}`) // eslint-disable-line
   }
 })
 
