@@ -1,22 +1,14 @@
-import Express from 'express'
-import mongoose from 'mongoose'
-import bodyParser from 'body-parser'
 import path from 'path'
 
-// Webpack Requirements
-import webpack from 'webpack'
-import webpackConfig from '../webpack.config.dev'
-import webpackDevMiddleware from 'webpack-dev-middleware'
-import webpackHotMiddleware from 'webpack-hot-middleware'
+import Express from 'express'
+import compression from 'compression'
+import bodyParser from 'body-parser'
 
-// Initialize the Express App
-const app = new Express()
+import config from './config'
+import * as hotLoading from './initializers/hotLoading'
+import * as database from './initializers/database'
 
-if (process.env.NODE_ENV !== 'production') {
-  const compiler = webpack(webpackConfig)
-  app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }))
-  app.use(webpackHotMiddleware(compiler))
-}
+// import posts from '../api/routes/post.routes'
 
 // React And Redux Setup
 import React from 'react' // eslint-disable-line no-unused-vars
@@ -25,28 +17,21 @@ import { configureStore } from '../client/redux/stores/configureStore'
 import { Provider } from 'react-redux'
 import { match, RouterContext } from 'react-router'
 
-// Import required modules
 import routes from '../client/routes'
-import { fetchComponentData } from './util/fetchData'
-// import posts from '../api/routes/post.routes'
-// import dummyData from '../api/dummyData'
-import config from './config'
+import { fetchComponentData } from './util/fetchComponentData'
 
-// MongoDB Connection
-mongoose.connect(config.mongoURL, (error) => {
-  if (error) {
-    console.error('Please make sure Mongodb is installed and running!') // eslint-disable-line no-console
-    throw error
-  }
 
-  // feed some dummy data in DB.
-  // dummyData()
-})
+const app = new Express()
 
+hotLoading.init(app)
+database.init(app)
+
+app.use(compression())
 app.use(bodyParser.json({ limit: '20mb' }))
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }))
 app.use(Express.static(path.resolve(__dirname, '../public')))
-// app.use('/api', api)
+// app.use('/api', posts)
+
 
 // Render Initial HTML
 const renderFullPage = (html, initialState) => {
