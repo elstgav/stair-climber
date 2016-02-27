@@ -4,11 +4,9 @@ import App from './container/App'
 import Home from './container/Home'
 // import PostDetailView from './container/PostDetailView'
 
-const routes = (
+export default (
   <Route path="/" component={App} >
     <IndexRoute component={Home} />
     {/* <Route path="/post/:slug" component={PostDetailView}/> */}
   </Route>
 )
-
-export default routes

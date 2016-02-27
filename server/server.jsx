@@ -13,7 +13,7 @@ import * as database from './initializers/database'
 // React And Redux Setup
 import React from 'react'
 import { renderToString } from 'react-dom/server'
-import { configureStore } from '../client/redux/stores/configureStore'
+import configureStore from '../client/redux/stores/configureStore'
 import { Provider } from 'react-redux'
 import { match, RouterContext } from 'react-router'
 
