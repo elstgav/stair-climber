@@ -12,14 +12,14 @@ module.exports = {
   entry: './client/index.js',
 
   output: {
-    path: __dirname + '/public/',
-    publicPath: '/',
+    path: './static/dist/',
+    publicPath: '/dist/',
     filename: 'app.js'
   },
 
   plugins: [
     // Clean
-    new CleanPlugin(['public']),
+    new CleanPlugin(['static/dist/']),
 
     // Optimize
     new webpack.optimize.DedupePlugin(),

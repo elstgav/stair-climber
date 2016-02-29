@@ -35,7 +35,7 @@ export default class HTML extends Component {
             }}
             charSet="UTF-8"
             />
-          <script src="/app.js" charSet="UTF-8"/>
+          <script src="/dist/app.js" charSet="UTF-8"/>
         </body>
       </html>
     );
