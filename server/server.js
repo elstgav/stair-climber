@@ -5,8 +5,10 @@ import compression from 'compression'
 import bodyParser from 'body-parser'
 
 import config from '_/config'
-import * as hotLoading from './initializers/hotLoading'
-import * as database   from './initializers/database'
+import {
+  Database,
+  HotLoader
+} from './initializers'
 
 // import posts from '../api/routes/post.routes'
 
@@ -23,8 +25,8 @@ import HTML from './helpers/HTML'
 
 const app = new Express()
 
-hotLoading.init(app)
-database.init(app)
+HotLoader.init(app)
+Database.init()
 
 app.use(compression())
 app.use(bodyParser.json({ limit: '20mb' }))
