@@ -1,8 +1,9 @@
 import { Route, IndexRoute } from 'react-router'
 import React from 'react'
-import App from './container/App'
-import Home from './container/Home'
-// import PostDetailView from './container/PostDetailView'
+import {
+  App,
+  Home
+} from './containers'
 
 export default (
   <Route path="/" component={App} >

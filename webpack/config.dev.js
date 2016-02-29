@@ -1,4 +1,4 @@
-var base = require('./webpack.config.prod')
+var base = require('./config.prod')
 var webpack = require('webpack')
 
 module.exports = {

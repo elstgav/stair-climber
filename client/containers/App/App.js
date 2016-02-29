@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import DevTools from '../components/DevTools'
+import { DevTools } from '_/client/components'
 
 
 export default connect()(
@@ -17,7 +17,7 @@ export default connect()(
 
     render() {
       return (
-        <div>
+        <div id='AppContainer'>
           { this.props.children }
           { this.reduxDevTools() }
         </div>

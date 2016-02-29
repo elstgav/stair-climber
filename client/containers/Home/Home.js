@@ -3,12 +3,14 @@ import { connect } from 'react-redux'
 
 import moment from 'moment'
 
-import FlightTracker from '../redux/stores/FlightTracker'
-import People        from '../redux/stores/People'
+import FlightTracker from '_/client/redux/stores/FlightTracker'
+import People        from '_/client/redux/stores/People'
 
-import DatePicker    from '../components/DatePicker'
-import FlightsForm   from '../components/FlightsForm'
-import Leaderboard   from '../components/Leaderboard'
+import {
+  DatePicker,
+  FlightsForm,
+  Leaderboard
+} from '_/client/components'
 
 
 export default connect()(
@@ -60,7 +62,7 @@ export default connect()(
 
     render() {
       return (
-        <div>
+        <div id="HomeContainer">
           <h1>Stair Climber</h1>
 
           <select value={this.person} onChange={this.onPersonChanged}>

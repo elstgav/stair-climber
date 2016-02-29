@@ -1,14 +1,15 @@
 var webpack = require('webpack')
 var CleanPlugin = require('clean-webpack-plugin')
+var path = require('path')
 
 module.exports = {
   cache: true,
 
-  context: __dirname,
+  context: path.resolve(__dirname, '..'),
 
   devtool: 'source-map',
 
-  entry: './client/index.jsx',
+  entry: './client/index.js',
 
   output: {
     path: __dirname + '/public/',
@@ -50,6 +51,6 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.js', '.jsx', '.css']
+    extensions: ['', '.js', '.jsx']
   }
 }

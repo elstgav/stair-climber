@@ -4,20 +4,20 @@ import Express from 'express'
 import compression from 'compression'
 import bodyParser from 'body-parser'
 
-import config from './config'
+import config from '_/config'
 import * as hotLoading from './initializers/hotLoading'
-import * as database from './initializers/database'
+import * as database   from './initializers/database'
 
 // import posts from '../api/routes/post.routes'
 
 // React And Redux Setup
 import React from 'react'
 import { renderToString } from 'react-dom/server'
-import configureStore from '../client/redux/stores/configureStore'
+import configureStore from '_/client/redux/stores/configureStore'
 import { Provider } from 'react-redux'
 import { match, RouterContext } from 'react-router'
 
-import routes from '../client/routes'
+import routes from '_/client/routes'
 import { fetchComponentData } from './util/fetchComponentData'
 
 
