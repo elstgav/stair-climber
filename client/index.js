@@ -3,9 +3,9 @@ import routes from './routes'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { Router, browserHistory } from 'react-router'
-import initStore from './redux/initStore'
+import createStore from './redux/create'
 
-const store = initStore(window.__INITIAL_STATE__)
+const store = createStore(window.__INITIAL_STATE__)
 const dest = document.getElementById('app')
 
 render((
