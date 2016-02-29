@@ -8,7 +8,7 @@ const reduxDevTools = () => {
     : fn => fn
 }
 
-export default function configureStore(initialState = {}) {
+export default function initStore(initialState = {}) {
   const store = createStore(reducer, initialState, compose(
     applyMiddleware(thunk),
     reduxDevTools()
@@ -16,11 +16,12 @@ export default function configureStore(initialState = {}) {
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
-    module.hot.accept('../reducer', () => {
-      const nextReducer = require('../reducer')
+    module.hot.accept('./reducer', () => {
+      const nextReducer = require('./reducer')
       store.replaceReducer(nextReducer)
     })
   }
 
   return store
 }
+

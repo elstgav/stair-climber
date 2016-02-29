@@ -13,7 +13,7 @@ import * as database   from './initializers/database'
 // React And Redux Setup
 import React from 'react'
 import ReactDOM from 'react-dom/server'
-import configureStore from '_/client/redux/stores/configureStore'
+import initStore from '_/client/redux/initStore'
 import { Provider } from 'react-redux'
 import { match, RouterContext } from 'react-router'
 
@@ -40,7 +40,7 @@ app.use((req, res) => {
     if (!props)   return res.status(404).end('Not found!')
     if (redirect) return res.redirect(redirect.pathname + redirect.search)
 
-    const store = configureStore()
+    const store = initStore()
 
     fetchComponentData(store.dispatch, props.components, props.params)
       .then(() => {
