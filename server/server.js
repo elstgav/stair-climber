@@ -12,14 +12,14 @@ import * as database   from './initializers/database'
 
 // React And Redux Setup
 import React from 'react'
-import { renderToString } from 'react-dom/server'
+import ReactDOM from 'react-dom/server'
 import configureStore from '_/client/redux/stores/configureStore'
 import { Provider } from 'react-redux'
 import { match, RouterContext } from 'react-router'
 
 import routes from '_/client/routes'
 import { fetchComponentData } from './util/fetchComponentData'
-
+import HTML from './helpers/HTML'
 
 const app = new Express()
 
@@ -33,49 +33,33 @@ app.use(Express.static(path.resolve(__dirname, '../public')))
 // app.use('/api', posts)
 
 
-// Render Initial HTML
-const renderFullPage = (html, initialState) => {
-  return `
-    <!doctype html>
-    <html>
-      <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Stair Climb Tracker</title>
-      </head>
-      <body>
-        <div id="app">${html}</div>
-        <script>
-          window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
-        </script>
-        <script src="/app.js"></script>
-      </body>
-    </html>
-  `
-}
-
 // Server Side Rendering based on routes matched by React-router.
 app.use((req, res) => {
-  match({ routes, location: req.url }, (err, redirect, props) => {
-    if (err)      return res.status(500).end('Internal server error')
-    if (redirect) return res.redirect(redirect.pathname + redirect.search)
+  match({ routes, location: req.url }, (error, redirect, props) => {
+    if (error)    return res.status(500).end('Internal server error')
     if (!props)   return res.status(404).end('Not found!')
+    if (redirect) return res.redirect(redirect.pathname + redirect.search)
 
     const store = configureStore()
 
     fetchComponentData(store.dispatch, props.components, props.params)
       .then(() => {
-        const html = renderToString(
-          <Provider store={store}>
+        const component = (
+          <Provider store={store} key='provider'>
             <RouterContext {...props} />
           </Provider>
         )
 
-        res.status(200).end(renderFullPage(html, store.getState()))
+        res.status(200).send(
+          '<!doctype html>\n' +
+          ReactDOM.renderToString(
+            <HTML content={component} store={store}/>
+          )
+        )
       })
       .catch(() => {
-        res.end(renderFullPage('Error', {}))
+        console.log('Unable to fetch data store') // eslint-disable-line
+        res.status(500).end('Internal server error')
       })
   })
 })
