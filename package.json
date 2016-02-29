@@ -13,7 +13,7 @@
   "scripts": {
     "start":       "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:dev":   "NODE_ENV=development node index.js",
-    "start:prod":  "NODE_ENV=production  npm run build && node index.js",
+    "start:prod":  "NODE_ENV=production npm run build && node index.js",
 
     "build":       "NODE_ENV=production webpack --verbose --colors --display-error-details --config webpack/config.prod.js",
 
@@ -101,10 +101,6 @@
     "babel-eslint":                "^5.0.0-beta6",
 
     "babel-preset-react-hmre":     "^1.1.0",
-
-    "redux-devtools":              "^3.1.1",
-    "redux-devtools-dock-monitor": "^1.1.0",
-    "redux-devtools-log-monitor":  "^1.0.4",
 
     "webpack-dev-server":          "^1.14.1",
     "webpack-dev-middleware":      "^1.5.1",
