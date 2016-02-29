@@ -10,7 +10,7 @@ module.exports = {
 
   devtool: 'source-map',
 
-  entry: './client/index.js',
+  entry: './client/app.js',
 
   output: {
     path: './static/dist/',
