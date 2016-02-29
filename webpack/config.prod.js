@@ -13,7 +13,7 @@ module.exports = {
   entry: './client/app.js',
 
   output: {
-    path: './static/dist/',
+    path: __dirname + '../static/dist/',
     publicPath: '/dist/',
     filename: 'app.js'
   },
