@@ -4,6 +4,7 @@ var path = require('path')
 
 module.exports = {
   cache: true,
+  progress: true,
 
   context: path.resolve(__dirname, '..'),
 

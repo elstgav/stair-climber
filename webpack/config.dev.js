@@ -1,11 +1,8 @@
 var base = require('./config.prod')
 var webpack = require('webpack')
+var _ = require('lodash')
 
-module.exports = {
-  cache: true,
-
-  context: base.context,
-
+module.exports = _.extend({}, base, {
   devtool: 'cheap-module-eval-source-map',
 
   entry: [
@@ -16,8 +13,6 @@ module.exports = {
 
     base.entry
   ],
-
-  output: base.output,
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -34,7 +29,5 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'babel?presets[]=react-hmre'
     })
-  },
-
-  resolve: base.resolve
-}
+  }
+})
