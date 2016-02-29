@@ -3,6 +3,7 @@ import path from 'path'
 import Express from 'express'
 import compression from 'compression'
 import bodyParser from 'body-parser'
+// import favicon from 'serve-favicon'
 
 import config from '_/config'
 import {
@@ -31,6 +32,7 @@ Database.init()
 app.use(compression())
 app.use(bodyParser.json({ limit: '20mb' }))
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }))
+// app.use(favicon(path.resolve(__dirname, '../static/favicon.ico')))
 app.use(Express.static(path.resolve(__dirname, '../static')))
 // app.use('/api', posts)
 
