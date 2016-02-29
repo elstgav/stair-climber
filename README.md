@@ -7,5 +7,5 @@ A React app for tracking stair flights climbed at Avvo HQ
 ## Running locally
 
 1. `$ npm install`
-2. `$ npm run dev`
+2. `$ npm start`
 3. `$ open http://localhost:8080`
