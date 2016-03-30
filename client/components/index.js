@@ -1,3 +1,3 @@
-export DatePicker  from './DatePicker/DatePicker'
-export FlightsForm from './FlightsForm/FlightsForm'
-export Leaderboard from './Leaderboard/Leaderboard'
+export DatePicker  from './DatePicker'
+export FlightsForm from './FlightsForm'
+export Leaderboard from './Leaderboard'

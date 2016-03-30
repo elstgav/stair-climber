@@ -3,7 +3,7 @@ import routes from './routes'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { Router, browserHistory } from 'react-router'
-import configureStore from './redux/configureStore'
+import configureStore from './lib/configureStore'
 
 const store = configureStore(window.__INITIAL_STATE__)
 const dest = document.getElementById('app')

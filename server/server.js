@@ -16,7 +16,7 @@ import {
 // React And Redux Setup
 import React from 'react'
 import ReactDOM from 'react-dom/server'
-import configureStore from '_/client/redux/configureStore'
+import configureStore from '_/client/lib/configureStore'
 import { Provider } from 'react-redux'
 import { match, RouterContext } from 'react-router'
 
@@ -34,7 +34,6 @@ app.use(bodyParser.json({ limit: '20mb' }))
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }))
 // app.use(favicon(path.resolve(__dirname, '../static/favicon.ico')))
 app.use(Express.static(path.resolve(__dirname, '../static')))
-// app.use('/api', posts)
 
 
 // Server Side Rendering based on routes matched by React-router.

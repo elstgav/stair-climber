@@ -19,6 +19,7 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         loading: true
       }
+
     case LOAD_SUCCESS:
       return {
         ...state,
@@ -26,6 +27,7 @@ export default function reducer(state = initialState, action = {}) {
         loaded:  true,
         flights: action.result
       }
+
     case LOAD_FAIL:
       return {
         ...state,
@@ -33,5 +35,8 @@ export default function reducer(state = initialState, action = {}) {
         loaded:  false,
         error:   action.error
       }
+
+    default:
+      return state
   }
 }
