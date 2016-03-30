@@ -5,7 +5,7 @@ import compression from 'compression'
 import bodyParser from 'body-parser'
 // import favicon from 'serve-favicon'
 
-import config from '_/config'
+import Config from '_/config'
 import {
   Database,
   HotLoader
@@ -69,9 +69,9 @@ app.use((req, res) => {
 })
 
 // start app
-app.listen(config.port, (error) => {
+app.listen(Config.port, (error) => {
   if (!error) {
-    console.log(`Listening on localhost:${config.port}`) // eslint-disable-line
+    console.log(`Listening on localhost:${Config.port}`) // eslint-disable-line
   }
 })
 

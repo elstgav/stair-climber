@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
-import config from '_/config'
+import Config from '_/config'
 
 
 export default connect()(
@@ -12,7 +12,7 @@ export default connect()(
     render() {
       return (
         <div id='AppContainer'>
-          <Helmet {...config.app.head}/>
+          <Helmet {...Config.app.head}/>
           { this.props.children }
         </div>
       )
