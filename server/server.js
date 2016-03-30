@@ -16,7 +16,7 @@ import {
 // React And Redux Setup
 import React from 'react'
 import ReactDOM from 'react-dom/server'
-import createStore from '_/client/redux/create'
+import configureStore from '_/client/redux/configureStore'
 import { Provider } from 'react-redux'
 import { match, RouterContext } from 'react-router'
 
@@ -44,7 +44,7 @@ app.use((req, res) => {
     if (!props)   return res.status(404).end('Not found!')
     if (redirect) return res.redirect(redirect.pathname + redirect.search)
 
-    const store = createStore()
+    const store = configureStore()
 
     fetchComponentData(store.dispatch, props.components, props.params)
       .then(() => {
