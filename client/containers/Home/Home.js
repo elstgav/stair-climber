@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import moment from 'moment'
 
+import Helmet from 'react-helmet'
+
 import FlightTracker from '_/client/redux/stores/FlightTracker'
 import People        from '_/client/redux/stores/People'
 
@@ -63,6 +65,7 @@ export default connect()(
     render() {
       return (
         <div id="HomeContainer">
+          <Helmet title='Home'/>
           <h1>Stair Climber</h1>
 
           <select value={this.person} onChange={this.onPersonChanged}>
