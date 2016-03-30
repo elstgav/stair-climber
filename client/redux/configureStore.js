@@ -1,6 +1,6 @@
 import { compose, createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import reducer  from '_/client/redux/reducer'
+import rootReducer  from './reducers'
 
 const reduxDevTools = () => {
   return (typeof window === 'object' && window.devToolsExtension)
@@ -9,15 +9,15 @@ const reduxDevTools = () => {
 }
 
 export default function configureStore(initialState = {}) {
-  const store = createStore(reducer, initialState, compose(
+  const store = createStore(rootReducer, initialState, compose(
     applyMiddleware(thunk),
     reduxDevTools()
   ))
 
   if (process.env.NODE_ENV == 'development' && module.hot) {
     module.hot.accept(
-      './reducer',
-      () => store.replaceReducer(require('./reducer'))
+      './reducers',
+      () => store.replaceReducer(require('./reducers'))
     )
   }
 
