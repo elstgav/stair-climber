@@ -6,10 +6,7 @@ import bodyParser from 'body-parser'
 // import favicon from 'serve-favicon'
 
 import Config from '_/config'
-import {
-  Database,
-  HotLoader
-} from './initializers'
+import { HotLoader } from './initializers'
 
 // import posts from '../api/routes/post.routes'
 
@@ -27,7 +24,6 @@ import HTML from './helpers/HTML'
 const app = new Express()
 
 HotLoader.init(app)
-Database.init()
 
 app.use(compression())
 app.use(bodyParser.json({ limit: '20mb' }))

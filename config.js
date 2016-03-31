@@ -1,7 +1,6 @@
 export default {
   host:     process.env.HOST || 'localhost',
   port:     process.env.PORT || 8080,
-  mongoURL: process.env.MONGO_URL || 'mongodb://localhost:27017/stair-climber',
   app: {
     name: 'StairClimb',
     head: {

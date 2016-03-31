@@ -38,8 +38,6 @@
     "lodash":                      "^4.3.0",
     "moment":                      "^2.11.1",
 
-    "mongoose":                    "^4.3.7",
-
     "react":                       "^0.14.7",
     "react-dom":                   "^0.14.7",
     "react-router":                "^2.0.0-rc5",
