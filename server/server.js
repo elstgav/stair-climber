@@ -66,7 +66,7 @@ app.use((req, res) => {
 // start app
 app.listen(Config.port, (error) => {
   if (!error) {
-    console.log(`Listening on localhost:${Config.port}`) // eslint-disable-line
+    console.log(`Listening on ${Config.host}:${Config.port}`) // eslint-disable-line
   }
 })
 
