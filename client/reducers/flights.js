@@ -3,10 +3,10 @@ import moment from 'moment'
 const DATE_FORMAT = 'YYYY-MM-DD'
 const FEET_PER_FLIGHT = 13
 
-const LOAD         = 'stairclimb/flights/LOAD'
-const LOAD_SUCCESS = 'stairclimb/flights/LOAD_SUCCESS'
-const LOAD_FAIL    = 'stairclimb/flights/LOAD_FAIL'
-const ADD          = 'stairclimb/flights/ADD'
+const LOAD         = 'step-up/flights/LOAD'
+const LOAD_SUCCESS = 'step-up/flights/LOAD_SUCCESS'
+const LOAD_FAIL    = 'step-up/flights/LOAD_FAIL'
+const ADD          = 'step-up/flights/ADD'
 
 const initialState = {
   loaded: false

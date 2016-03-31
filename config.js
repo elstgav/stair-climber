@@ -3,10 +3,10 @@ export default {
   port:     process.env.PORT || 8080,
   apiUrl:   process.env.API_URL || 'localhost:8081',
   app: {
-    name: 'StairClimb',
+    name: 'StepUp',
     head: {
-      title: 'StairClimb',
-      titleTemplate: 'StairClimb - %s',
+      title: 'StepUp',
+      titleTemplate: 'StepUp - %s',
       meta: [
         { charset: 'utf-8' },
         { name: 'description', content: 'Track your stair climbing at Avvo.' }

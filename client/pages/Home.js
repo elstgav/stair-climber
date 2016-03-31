@@ -66,7 +66,7 @@ export default connect()(
       return (
         <div id="HomeContainer">
           <Helmet title='Home'/>
-          <h1>Stair Climber</h1>
+          <h1>StepUp</h1>
 
           <select value={this.person} onChange={this.onPersonChanged}>
             <option>Select a person…</option>

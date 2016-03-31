@@ -1,13 +1,13 @@
 {
-  "name":        "stair-climber",
+  "name":        "step-up",
   "version":     "0.0.1",
   "description": "Track your stair climbing at Avvo",
-  "homepage":    "http://stair-climber.herokuapp.com/",
+  "homepage":    "http://step-up.herokuapp.com/",
   "author":      "Gavin Elster <gavin.elster@me.com>",
   "license":     "MIT",
-  "repository":  "git@github.com:elstgav/stair-climber.git",
+  "repository":  "git@github.com:elstgav/step-up.git",
   "bugs": {
-    "url": "https://github.com/elstgav/stair-climber/issues"
+    "url": "https://github.com/elstgav/step-up/issues"
   },
 
   "scripts": {
