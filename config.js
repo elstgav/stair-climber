@@ -1,7 +1,7 @@
 export default {
   host:     process.env.HOST || 'localhost',
   port:     process.env.PORT || 8080,
-  apiUrl:   `http://${process.env.API_URL || 'step-up-api.dev'}`,
+  apiUrl:   process.env.API_URL || 'http://step-up-api.dev',
   app: {
     name: 'StepUp',
     head: {
