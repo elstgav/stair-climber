@@ -1,6 +1,5 @@
 var webpack = require('webpack')
 var CleanPlugin = require('clean-webpack-plugin')
-var path = require('path')
 
 module.exports = {
   cache: true,
@@ -8,7 +7,7 @@ module.exports = {
 
   devtool: 'source-map',
 
-  entry: './client/app.js',
+  entry: './src/app.js',
 
   output: {
     path: './public/',

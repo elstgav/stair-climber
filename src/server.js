@@ -6,20 +6,18 @@ import bodyParser from 'body-parser'
 // import favicon from 'serve-favicon'
 
 import Config from '_/config'
-import { HotLoader } from './initializers'
-
-// import posts from '../api/routes/post.routes'
+import HotLoader from '_/src/lib/HotLoader'
 
 // React And Redux Setup
 import React from 'react'
 import ReactDOM from 'react-dom/server'
-import configureStore from '_/client/lib/configureStore'
+import configureStore from '_/src/lib/configureStore'
 import { Provider } from 'react-redux'
 import { match, RouterContext } from 'react-router'
 
-import routes from '_/client/routes'
-import { fetchComponentData } from './util/fetchComponentData'
-import HTML from './helpers/HTML'
+import routes from '_/src/routes'
+import { fetchComponentData } from '_/src/lib/fetchComponentData'
+import HTML from '_/src/lib/HTML'
 
 const app = new Express()
 

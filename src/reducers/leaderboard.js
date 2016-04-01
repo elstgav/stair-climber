@@ -1,7 +1,7 @@
 import {
   LEADERBOARD_FETCH_START,
   LEADERBOARD_FETCH_SUCCESS
-} from '_/client/actions/leaderboard'
+} from '_/src/actions/leaderboard'
 
 const initialState = {
   sync: {

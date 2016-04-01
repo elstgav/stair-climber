@@ -2,13 +2,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import * as leaderboardActionCreators from '../actions/leaderboard'
+import * as leaderboardActionCreators from '_/src/actions/leaderboard'
 
 import Helmet from 'react-helmet'
 
 import {
   Leaderboard
-} from '_/client/components'
+} from '_/src/components'
 
 
 const LeaderboardPage = React.createClass({

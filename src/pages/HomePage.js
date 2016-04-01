@@ -5,14 +5,14 @@ import moment from 'moment'
 
 import Helmet from 'react-helmet'
 
-import FlightTracker from '_/client/redux/stores/FlightTracker'
-import People        from '_/client/redux/stores/People'
+import FlightTracker from '_/src/redux/stores/FlightTracker'
+import People        from '_/src/redux/stores/People'
 
 import {
   DatePicker,
   FlightsForm,
   Leaderboard
-} from '_/client/components'
+} from '_/src/components'
 
 
 export default connect()(

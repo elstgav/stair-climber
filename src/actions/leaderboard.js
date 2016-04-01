@@ -1,7 +1,7 @@
 export const LEADERBOARD_FETCH_START   = 'LEADERBOARD::FETCH_START'
 export const LEADERBOARD_FETCH_SUCCESS = 'LEADERBOARD::FETCH_SUCCESS'
 
-import api from '_/client/lib/api'
+import api from '_/src/lib/api'
 
 function fetchStart() {
   return {

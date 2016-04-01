@@ -1,6 +1,6 @@
 import { compose, createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import rootReducer  from '_/client/reducers'
+import rootReducer  from '_/src/reducers'
 
 const reduxDevTools = () => {
   return (typeof window === 'object' && window.devToolsExtension)
