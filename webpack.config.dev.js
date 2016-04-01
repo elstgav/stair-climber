@@ -1,4 +1,4 @@
-var base = require('./config.prod')
+var base = require('./webpack.config.prod')
 var webpack = require('webpack')
 var _ = require('lodash')
 

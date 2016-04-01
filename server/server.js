@@ -28,8 +28,8 @@ HotLoader.init(app)
 app.use(compression())
 app.use(bodyParser.json({ limit: '20mb' }))
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }))
-// app.use(favicon(path.resolve(__dirname, '../static/favicon.ico')))
-app.use(Express.static(path.resolve(__dirname, '../static')))
+// app.use(favicon(path.resolve(__dirname, '../public/favicon.ico')))
+app.use(Express.static(path.resolve(__dirname, '../public')))
 
 
 // Server Side Rendering based on routes matched by React-router.

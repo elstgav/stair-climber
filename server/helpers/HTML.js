@@ -24,7 +24,6 @@ export default class HTML extends Component {
           {head.link.toComponent()}
           {head.script.toComponent()}
 
-          <link rel="shortcut icon" href="/favicon.ico" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </head>
         <body>
@@ -35,7 +34,7 @@ export default class HTML extends Component {
             }}
             charSet="UTF-8"
             />
-          <script src="/dist/app.js" charSet="UTF-8"/>
+          <script src="/app.js" charSet="UTF-8"/>
         </body>
       </html>
     );

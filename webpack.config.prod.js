@@ -6,21 +6,19 @@ module.exports = {
   cache: true,
   progress: true,
 
-  context: path.resolve(__dirname, '..'),
-
   devtool: 'source-map',
 
   entry: './client/app.js',
 
   output: {
-    path: __dirname + '../static/dist/',
-    publicPath: '/dist/',
+    path: './public/',
+    publicPath: '/public/',
     filename: 'app.js'
   },
 
   plugins: [
     // Clean
-    new CleanPlugin(['static/dist/']),
+    new CleanPlugin(['public/']),
 
     // Optimize
     new webpack.optimize.DedupePlugin(),
