@@ -1,4 +1,4 @@
-import Config from '_/config'
+import Config from '_/src/config'
 import Axios from 'axios'
 
 export default Axios.create({

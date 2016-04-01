@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
-import Config from '_/config'
+import Config from '_/src/config'
 
 
 export default connect()(

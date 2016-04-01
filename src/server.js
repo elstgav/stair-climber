@@ -5,7 +5,7 @@ import compression from 'compression'
 import bodyParser from 'body-parser'
 // import favicon from 'serve-favicon'
 
-import Config from '_/config'
+import Config from '_/src/config'
 import HotLoader from '_/src/lib/HotLoader'
 
 // React And Redux Setup
