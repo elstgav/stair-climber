@@ -1,40 +1,33 @@
 import React from 'react'
-import _ from 'lodash'
+
+const FEET_PER_FLIGHT = 13
+
+function totalElevation(person) {
+  return `${(person.total_flights * FEET_PER_FLIGHT).toLocaleString()} ft`
+}
 
 const Leaderboard = React.createClass({
-  sortedPeople() {
-    return _(this.props.people.getAll())
-      .sortBy(p => p.flightsClimbed.totalFlights())
-      .reverse()
-      .value()
+  getInitialState() {
+    return {
+      today: moment('2016-01-01')
+    }
   },
 
   render() {
     return (
       <div>
-        <h2>Leaderboard</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Person</th>
-              <th>Flights</th>
-              <th>Elevation</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              this.sortedPeople().map((person) => {
-                return (
-                  <tr key={person.id}>
-                    <td>{person.fullName}</td>
-                    <td>{person.flightsClimbed.totalFlights()} flights</td>
-                    <td>{person.flightsClimbed.totalElevation()} feet</td>
-                  </tr>
-                )
-              })
-            }
-          </tbody>
-        </table>
+        <h2>{this.state.today.format('MMMM')} Leaderboard</h2>
+        <ol className="leaderboard">
+          {this.props.leaders.map((person) => {
+            return (
+              <li>
+                <div className="leaderboard-rank"></div>
+                <div className="leaderboard-name">{person.full_name}</div>
+                <div className="leaderboard-total">{totalElevation(person)}</div>
+              </li>
+            )
+          })}
+        </ol>
       </div>
     )
   }

@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
-import flights from './flights'
+
+import leaderboard from './leaderboard'
 
 export default combineReducers({
-  flights
+  leaderboard
 })
