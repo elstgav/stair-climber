@@ -21,7 +21,7 @@ const Leaderboard = React.createClass({
         <ol className="leaderboard">
           {this.props.leaders.map((person) => {
             return (
-              <li>
+              <li key={person.id}>
                 <div className="leaderboard-rank"></div>
                 <div className="leaderboard-name">{person.full_name}</div>
                 <div className="leaderboard-total">{totalElevation(person)}</div>
