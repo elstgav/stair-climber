@@ -1,16 +1,16 @@
 import { Route, IndexRoute } from 'react-router'
 import React from 'react'
 import {
-  App
+  AppContainer
 } from './containers'
 
 import {
-  Home
+  HomePage,
 } from './pages'
 
 export default (
-  <Route path="/" component={App} >
-    <IndexRoute component={Home} />
+  <Route path="/" component={AppContainer} >
+    <IndexRoute component={HomePage} />
     {/* <Route path="/post/:slug" component={PostDetailView}/> */}
   </Route>
 )
