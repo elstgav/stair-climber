@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 
 const FEET_PER_FLIGHT = 13
 
