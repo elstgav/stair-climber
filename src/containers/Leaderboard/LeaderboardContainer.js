@@ -1,5 +1,5 @@
 import React from 'react'
-import { Leaderboard } from '_/src/components'
+import { Leaderboard } from 'src/components'
 
 export default class extends React.Component {
   constructor(props) {

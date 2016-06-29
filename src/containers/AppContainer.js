@@ -1,6 +1,6 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import Config from '_/src/config'
+import Config from 'src/config'
 
 
 export default ({children}) => {
