@@ -11,7 +11,7 @@ const LeaderboardListElement = React.createClass({
     return (
       <tr>
         <td>{this.props.rank}</td>
-        <td>{this.props.leader.name}</td>
+        <td>{this.props.leader.full_name}</td>
         <td>{elevation(this.props.leader.total_flights)}</td>
       </tr>
     )

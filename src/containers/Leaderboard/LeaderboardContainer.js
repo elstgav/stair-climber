@@ -1,54 +1,33 @@
 import React from 'react'
+import Axios from 'axios'
 import { Leaderboard } from 'src/components'
 
 export default class extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      monthlyLeaders: [
-        {
-          name: "Pavel Sorokin",
-          total_flights: 370
-        },
-        {
-          name: "Chris Ziobro",
-          total_flights: 355
-        },
-        {
-          name: "Gavin Elster",
-          total_flights: 340
-        },
-        {
-          name: "Cassondra Copeland",
-          total_flights: 310
-        },
-        {
-          name: "Matt Ritchie",
-          total_flights: 290
-        }
-      ],
-      weeklyLeaders: [
-        {
-          name: "Pavel Sorokin",
-          total_flights: 62
-        },
-        {
-          name: "Chris Ziobro",
-          total_flights: 51
-        },
-        {
-          name: "Gavin Elster",
-          total_flights: 44
-        }
-      ]
+      monthlyLeaders: [],
+      weeklyLeaders: []
     }
+  }
+
+  componentDidMount() {
+    Axios.get('http://step-up-api.herokuapp.com/')
+         .then(response => {
+           var leaders = response.data.sort((a, b) => a.total_flights - b.total_flights).reverse()
+           this.setState({
+             monthlyLeaders: leaders,
+             weeklyLeaders: leaders.slice(0, 3),
+           })
+         })
+         .catch(error => console.log(error))
   }
 
   render() {
     return (
       <div id="leaderboard">
         <Leaderboard title="March leaderboard" leaders={this.state.monthlyLeaders}/>
-        <Leaderboard title="Weekly leaders" leaders={this.state.weeklyLeaders}/>
+        <Leaderboard title="Weekly leaders"    leaders={this.state.weeklyLeaders}/>
       </div>
     )
   }
