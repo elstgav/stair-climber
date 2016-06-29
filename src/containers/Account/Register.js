@@ -1,41 +1,37 @@
 import React from 'react'
 import Helmet from 'react-helmet'
+import {RegisterForm} from '_/src/components'
 
 export default class extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      fields: {
+        name: '',
+        email: '',
+        password: '',
+        homefloor: ''
+      }
+    }
   }
+
+  handleFormSubmit = (e) => {
+    e.preventDefault();
+    console.log(this.state.fields)
+  }
+
+  handleInputChange = (e) => {
+    const field = e.target.name
+    let fields = this.state.fields
+    fields[field] = e.target.value
+    this.setState[{fields: fields}]
+  };
 
   render() {
     return (
       <div>
-        <form>
-          <div>
-            <label>Name</label>
-          </div>
-          <div>
-            <input type="text"/>
-          </div>
-          <div>
-            <label>Email</label>
-          </div>
-          <div>
-            <input type="email"/>
-          </div>
-          <div>
-            <label>Password</label>
-          </div>
-          <div>
-            <input type="password"/>
-          </div>
-          <div>
-            <label>Home Floor</label>
-          </div>
-          <div>
-            <input type="text"/>
-          </div>
-          <button type="submit">Register</button>&nbsp;or&nbsp;<a onClick={this.props.toggle}>Sign in</a>
-        </form>
+        <Helmet title='Register'/>
+        <RegisterForm handleFormSubmit={this.handleFormSubmit} handleInputChange={this.handleInputChange} toggle={this.props.toggle} />
       </div>
     )
   }

@@ -20,12 +20,11 @@ export default class Html extends Component {
           {head.title.toComponent()}
           {head.meta.toComponent()}
           {head.link.toComponent()}
-
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </head>
         <body>
-          <div id="app" dangerouslySetInnerHTML={{ __html: renderedContent }} />
-          {head.script.toComponent()}
+          <div id="app" dangerouslySetInnerHTML={{ __html: renderedContent }}/>
+          <script src="/app.js" charSet="UTF-8"/>
         </body>
       </html>
     )
