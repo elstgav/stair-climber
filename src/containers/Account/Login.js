@@ -32,7 +32,7 @@ export default class extends React.Component {
     const field = e.target.name
     let fields = this.state.fields
     fields[field] = e.target.value
-    this.setState[{fields: fields}]
+    this.setState({fields: fields})
   };
 
 

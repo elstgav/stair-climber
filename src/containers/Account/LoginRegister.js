@@ -3,6 +3,7 @@ import Helmet from 'react-helmet'
 import Login from './Login'
 import Register from './Register'
 import {getFirebase} from 'src/lib/firebaseAdapter'
+import {browserHistory} from 'react-router'
 
 export default class extends React.Component {
   constructor(props) {
@@ -14,6 +15,12 @@ export default class extends React.Component {
     e.preventDefault();
     const isLoginPage = this.state.login;
     this.setState({login: !isLoginPage})
+  }
+
+  componentDidMount() {
+    if (getFirebase().auth().currentUser) {
+      browserHistory.push('/')
+    }
   }
 
   render() {
