@@ -8,7 +8,7 @@ import People        from '_/src/lib/People'
 import {
   DatePicker,
   FlightsForm,
-  Leaderboard
+  OldLeaderboard
 } from '_/src/components'
 
 
@@ -16,7 +16,7 @@ export default React.createClass({
   getInitialState() {
     return {
       entryDate: moment(),
-      person: null
+      person: People.get(0)
     }
   },
 
@@ -60,12 +60,13 @@ export default React.createClass({
 
   render() {
     return (
-      <div id="HomeContainer">
-        <Helmet title='Home'/>
+      <div id="FlightTrackerContainer">
+        {<Helmet title='Home'/>}
         <h1>StepUp</h1>
 
-        <select value={this.state.person} onChange={this.onPersonChanged}>
-          <option>Select a person…</option>
+        <label htmlFor="change-user">Switch user: </label>
+        <select id="change-user" value={this.state.person.id} onChange={this.onPersonChanged}>
+          <option>Switch user…</option>
           {People.map(person =>
             <option key={person.id} value={person.id}>{person.fullName}</option>
           )}
@@ -73,7 +74,7 @@ export default React.createClass({
 
         {this.entryForm()}
 
-        <Leaderboard people={People} flightTracker={FlightTracker}/>
+        <OldLeaderboard people={People} flightTracker={FlightTracker}/>
       </div>
     )
   }
