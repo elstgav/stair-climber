@@ -1,6 +1,6 @@
 export DatePicker  from './DatePicker'
 export FlightsForm from './FlightsForm'
-export Leaderboard from './Leaderboard'
+export Leaderboard from './Leaderboard/Leaderboard'
 export LoginForm from './Account/LoginForm'
 export Register from './Account/Register'
 export OldLeaderboard from './OldLeaderboard'
