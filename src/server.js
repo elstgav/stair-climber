@@ -31,11 +31,9 @@ app.use((req, res) => {
     if (error)    return res.status(500).end('Internal server error')
     if (!props)   return res.status(404).end('Not found!')
     if (redirect) return res.redirect(redirect.pathname + redirect.search)
-    res.status(200).send(
-      '<!doctype html>\n' +
-      renderToString(
-        <HTML content={<RouterContext {...props}/>}/>
-      )
+    return res.status(200).send(
+      `<!doctype html>
+      ${renderToString(<Html content={<RouterContext {...props} />} />)}`
     )
   })
 })
