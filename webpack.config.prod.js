@@ -1,5 +1,5 @@
-var webpack = require('webpack')
-var CleanPlugin = require('clean-webpack-plugin')
+const webpack = require('webpack')
+const CleanPlugin = require('clean-webpack-plugin')
 
 module.exports = {
   cache: true,
@@ -10,7 +10,7 @@ module.exports = {
   entry: './src/app.js',
 
   output: {
-    path: __dirname + '/public/',
+    path: `${__dirname}/public/`,
     publicPath: '/',
     filename: 'app.js',
   },
