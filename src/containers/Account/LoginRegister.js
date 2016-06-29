@@ -8,10 +8,16 @@ export default class extends React.Component {
     this.state = {login: true}
   }
 
+  toggle = (e) => {
+    e.preventDefault();
+    const isLoginPage = this.state.login;
+    this.setState({login: !isLoginPage})
+  }
+
   render() {
     return (
       <div>
-        {(this.state.login) ? <Login /> : <Register /> }
+        {(this.state.login) ? <Login toggle={this.toggle}/> : <Register toggle={this.toggle}/> }
       </div>
     )
   }

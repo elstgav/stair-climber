@@ -23,7 +23,7 @@ export default class extends React.Component {
           <div>
             <input type="password"/>
           </div>
-          <button type="submit">Sign In</button><span>&nbsp;or Register</span>
+          <button type="submit">Sign In</button>&nbsp;or&nbsp;<a onClick={this.props.toggle}>Register</a>
         </form>
       </div>
     )
