@@ -7,14 +7,14 @@ export default class extends React.Component {
     super(props)
     this.state = {
       monthlyLeaders: [],
-      weeklyLeaders: []
+      weeklyLeaders: [],
     }
   }
 
   componentDidMount() {
     Axios.get('http://step-up-api.herokuapp.com/')
          .then(response => {
-           var leaders = response.data.sort((a, b) => a.total_flights - b.total_flights).reverse()
+           const leaders = response.data.sort((a, b) => a.total_flights - b.total_flights).reverse()
            this.setState({
              monthlyLeaders: leaders,
              weeklyLeaders: leaders.slice(0, 3),
