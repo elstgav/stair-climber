@@ -1,19 +1,20 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-
-import * as leaderboardActionCreators from '_/src/actions/leaderboard'
-
 import Helmet from 'react-helmet'
+import api from '_/src/lib/api'
 
 import {
   Leaderboard
 } from '_/src/components'
 
 
-const LeaderboardPage = React.createClass({
+export default React.createClass({
+  getInitialState: function() {
+    return {leaders: []};
+  },
   componentWillMount() {
-    this.props.fetchLeaderboard()
+    api
+      .get('/leaderboard/2016/01/')
+      .then(({ data }) => {this.setState({leaders: data})})
   },
 
   render() {
@@ -21,23 +22,9 @@ const LeaderboardPage = React.createClass({
       <div>
         <Helmet title='Leaderboard'/>
         <h1>StepUp</h1>
-        <Leaderboard leaders={this.props.leaders}/>
+        <Leaderboard leaders={this.state.leaders}/>
       </div>
     )
   }
 })
 
-function mapStateToProps(state) {
-  return {
-    leaders: state.leaderboard.records
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    leaderboardActions: bindActionCreators(leaderboardActionCreators, dispatch),
-    fetchLeaderboard: () => dispatch(leaderboardActionCreators.fetchAll())
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(LeaderboardPage)

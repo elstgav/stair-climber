@@ -1,18 +1,17 @@
 import React, {Component, PropTypes} from 'react';
-import ReactDOM from 'react-dom/server';
+import {renderToString} from 'react-dom/server';
 import serialize from 'serialize-javascript';
 import Helmet from 'react-helmet';
 
 
 export default class HTML extends Component {
   static propTypes = {
-    content: PropTypes.node,
-    store:   PropTypes.object
+    content: PropTypes.node
   }
 
   render() {
-    const {content, store} = this.props;
-    const renderedContent = content ? ReactDOM.renderToString(content) : '';
+    const {content} = this.props;
+    const renderedContent = content ? renderToString(content) : '';
     const head = Helmet.rewind();
 
     return (
@@ -28,12 +27,6 @@ export default class HTML extends Component {
         </head>
         <body>
           <div id="app" dangerouslySetInnerHTML={{__html: renderedContent}}/>
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `window.__INITIAL_STATE__=${serialize(store.getState())};`
-            }}
-            charSet="UTF-8"
-            />
           <script src="/app.js" charSet="UTF-8"/>
         </body>
       </html>
