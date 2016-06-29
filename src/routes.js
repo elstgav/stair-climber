@@ -5,8 +5,9 @@ import {
 } from './containers'
 
 import {
-  HomePage,
-  LeaderboardPage
+  LeaderboardPage,
+  FlightTrackerPage,
+  AccountPage
 } from './pages'
 
 export default (
