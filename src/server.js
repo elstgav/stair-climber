@@ -4,15 +4,15 @@ import Express from 'express'
 import compression from 'compression'
 import bodyParser from 'body-parser'
 
-import Config from '_/src/config'
-import HotLoader from '_/src/lib/HotLoader'
+import Config from 'src/config'
+import HotLoader from 'src/lib/HotLoader'
 
 import React from 'react'
-import {renderToString} from 'react-dom/server'
+import { renderToString } from 'react-dom/server'
 import { match, RouterContext } from 'react-router'
 
-import routes from '_/src/routes'
-import HTML from '_/src/lib/HTML'
+import routes from 'src/routes'
+import Html from 'src/lib/Html'
 
 const app = new Express()
 

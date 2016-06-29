@@ -7,8 +7,10 @@
 
   "plugins": [
     [
-      "babel-root-import",
-      { "rootPathPrefix": "_" }
+      "module-alias",
+      [
+        { "src": "./src",  "expose": "src"  },
+      ]
     ],
     "transform-react-display-name"
   ],
