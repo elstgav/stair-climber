@@ -9,8 +9,13 @@ export default class extends React.Component {
   render() {
     return (
       <div>
-        <Helmet title='Login'/>
         <form>
+          <div>
+            <label>Name</label>
+          </div>
+          <div>
+            <input type="text"/>
+          </div>
           <div>
             <label>Email</label>
           </div>
@@ -23,7 +28,13 @@ export default class extends React.Component {
           <div>
             <input type="password"/>
           </div>
-          <button type="submit">Sign In</button><span>&nbsp;or Register</span>
+          <div>
+            <label>Home Floor</label>
+          </div>
+          <div>
+            <input type="text"/>
+          </div>
+          <button type="submit">Register</button>&nbsp;or&nbsp;<a onClick={this.props.toggle}>Sign in</a>
         </form>
       </div>
     )

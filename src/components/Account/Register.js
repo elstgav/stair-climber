@@ -9,6 +9,7 @@ export default class extends React.Component {
   render() {
     return (
       <div>
+        <Helmet title='Register'/>
         <form>
           <div>
             <label>Name</label>
@@ -34,7 +35,7 @@ export default class extends React.Component {
           <div>
             <input type="text"/>
           </div>
-          <button type="submit">Sign Up</button><span>&nbsp;or Sign in</span>
+          <button type="submit">Register</button>&nbsp;or&nbsp;<a onClick={this.props.toggle}>Sign in</a>
         </form>
       </div>
     )
