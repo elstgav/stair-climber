@@ -1,38 +1,23 @@
 rules:
-  indent:
+  # object keys must have at least one space after the colon
+  key-spacing:
     - 2
-    - 2
-    - SwitchCase: 1
+    - mode: 'minimum'
 
-  linebreak-style:
-    - 2
-    - unix
-
-  no-unused-vars:
-    - 2
-    - varsIgnorePattern: '(React|mocha)'
-
-  quotes:
-    - 2
-    - single
-    - avoid-escape
-
+  # never use semi-colons
   semi:
     - 2
     - never
 
-env:
-  es6:     true
-  browser: true
-  node:    true
-  mocha:   true
+  # though we don’t enforce, only use multi spaces for alignment
+  no-multi-spaces:
+    - 0
 
-extends: 'eslint:recommended'
+  # remove all unused variables
+  no-unused-vars:
+    - 2
+    - argsIgnorePattern: '^_' # ignore vars with a _ prefix (e.g. _foo)
 
-ecmaFeatures:
-  jsx: true
-  experimentalObjectRestSpread: true
-  modules: true
+extends: 'airbnb'
 
-plugins:
-  - react
+parser: 'babel-eslint'
