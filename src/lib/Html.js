@@ -17,7 +17,7 @@ export default function Html({ content }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body>
-        <div id="app" dangerouslySetInnerHTML={{ __html: renderedContent }}/>
+        <div id="app" dangerouslySetInnerHTML={{ __html: renderedContent }} />
         <script src="/app.js" charSet="UTF-8" />
       </body>
     </html>
