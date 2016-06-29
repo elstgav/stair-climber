@@ -1,6 +1,6 @@
-var base = require('./webpack.config.prod')
-var webpack = require('webpack')
-var _ = require('lodash')
+const base = require('./webpack.config.prod')
+const webpack = require('webpack')
+const _ = require('lodash')
 
 module.exports = _.extend({}, base, {
   devtool: 'cheap-module-eval-source-map',

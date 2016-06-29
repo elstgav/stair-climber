@@ -1,8 +1,8 @@
 {
   "presets": [
-    "react",
     "es2015",
-    "stage-1"
+    "es2016",
+    "react"
   ],
 
   "plugins": [
@@ -12,6 +12,8 @@
         { "src": "./src",  "expose": "src"  },
       ]
     ],
+    "transform-class-properties",
+    "transform-export-extensions",
     "transform-react-display-name"
   ],
 

@@ -8,24 +8,24 @@ class PersonFlights {
     this.store = new Map()
   }
 
-  get(date=moment()) {
+  get(date = moment()) {
     return this.store.get(date.format(DATE_FORMAT)) || 0
   }
 
-  set(date=moment(), flights=0) {
+  set(date = moment(), flights = 0) {
     if (flights < 0) flights = 0
     this.store.set(date.format(DATE_FORMAT), flights)
     return self
   }
 
-  add(date=moment(), flights=1) {
-    let newFlights = this.get(date) + flights
+  add(date = moment(), flights = 1) {
+    const newFlights = this.get(date) + flights
     this.set(date, newFlights)
     return self
   }
 
-  subtract(date=moment(), flights=1) {
-    let newFlights = this.get(date) - flights
+  subtract(date = moment(), flights = 1) {
+    const newFlights = this.get(date) - flights
     this.set(date, newFlights)
     return self
   }
@@ -48,7 +48,7 @@ class FlightTracker {
   }
 
   new(person) {
-    let flightsClimbed = new PersonFlights()
+    const flightsClimbed = new PersonFlights()
     this.store.set(person.id, flightsClimbed)
     return flightsClimbed
   }

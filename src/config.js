@@ -9,8 +9,8 @@ export default {
       titleTemplate: 'StepUp - %s',
       meta: [
         { charset: 'utf-8' },
-        { name: 'description', content: 'Track your stair climbing at Avvo.' }
+        { name: 'description', content: 'Track your stair climbing at Avvo.' },
       ],
-    }
-  }
+    },
+  },
 }

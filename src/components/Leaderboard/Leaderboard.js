@@ -2,7 +2,7 @@ import React from 'react'
 
 const FEET_PER_FLIGHT = 13
 
-var elevation = (flights) => {
+const elevation = (flights) => {
   return `${(flights * FEET_PER_FLIGHT).toLocaleString()} ft`
 }
 
@@ -24,7 +24,7 @@ const LeaderboardList = React.createClass({
       <table>
         <tbody>
           {this.props.leaders.map((leader, index) =>
-             <LeaderboardListElement rank={index + 1} leader={leader} />)}
+            <LeaderboardListElement key={index + 1} rank={index + 1} leader={leader} />)}
         </tbody>
       </table>
     )
