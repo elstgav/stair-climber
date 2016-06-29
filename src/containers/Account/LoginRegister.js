@@ -2,6 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import Login from './Login'
 import Register from './Register'
+import {getFirebase} from 'src/lib/firebaseAdapter'
 
 export default class extends React.Component {
   constructor(props) {

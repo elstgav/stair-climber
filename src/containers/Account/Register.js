@@ -1,6 +1,8 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { RegisterForm } from 'src/components'
+import { RegisterForm, ErrorMessageBanner } from 'src/components'
+import {getFirebase} from 'src/lib/firebaseAdapter'
+import { browserHistory } from 'react-router';
 
 export default class extends React.Component {
   constructor(props) {
@@ -11,13 +13,22 @@ export default class extends React.Component {
         email: '',
         password: '',
         homefloor: ''
-      }
+      },
+      error: false
     }
   }
 
   handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.fields)
+    let self = this;
+    getFirebase().auth().createUserWithEmailAndPassword(this.state.fields.email, this.state.fields.password)
+    .then(user => {
+      browserHistory.push('/')
+    }).catch(function(error) {
+      var errorCode = error.code
+      var errorMessage = error.message
+      self.setState({error: errorMessage})
+    })
   }
 
   handleInputChange = (e) => {
@@ -32,6 +43,7 @@ export default class extends React.Component {
       <div>
         <Helmet title='Register'/>
         <RegisterForm handleFormSubmit={this.handleFormSubmit} handleInputChange={this.handleInputChange} toggle={this.props.toggle} />
+        {this.state.error && <ErrorMessageBanner errorMessage={this.state.error} />}
       </div>
     )
   }

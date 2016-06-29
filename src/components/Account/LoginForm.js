@@ -1,20 +1,20 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 
-export default ({toggle}) => {
+export default ({handleFormSubmit, handleInputChange, toggle}) => {
   return (
-    <form>
+    <form onSubmit={handleFormSubmit}>
       <div>
         <label>Email</label>
       </div>
       <div>
-        <input type="email"/>
+        <input onChange={handleInputChange} name="email" type="email"/>
       </div>
       <div>
         <label>Password</label>
       </div>
       <div>
-        <input type="password"/>
+        <input onChange={handleInputChange} name="password" type="password"/>
       </div>
       <button type="submit">Sign In</button>&nbsp;or&nbsp;<a onClick={toggle}>Register</a>
     </form>
