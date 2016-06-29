@@ -21,13 +21,12 @@ export default class HTML extends Component {
           {head.title.toComponent()}
           {head.meta.toComponent()}
           {head.link.toComponent()}
-          {head.script.toComponent()}
 
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </head>
         <body>
           <div id="app" dangerouslySetInnerHTML={{__html: renderedContent}}/>
-          <script src="/app.js" charSet="UTF-8"/>
+          {head.script.toComponent()}
         </body>
       </html>
     );
