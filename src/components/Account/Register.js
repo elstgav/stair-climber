@@ -9,6 +9,7 @@ export default class extends React.Component {
   render() {
     return (
       <div>
+        <Helmet title='Register'/>
         <form>
           <div>
             <label>Name</label>

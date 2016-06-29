@@ -1,6 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import {Login, Register} from '_/src/components'
+import Login from './Login'
+import Register from './Register'
 
 export default class extends React.Component {
   constructor(props) {
