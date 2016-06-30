@@ -31,7 +31,7 @@ const LeaderboardList = React.createClass({
   }
 })
 
-export default React.createClass({
+const Leaderboard = React.createClass({
   render() {
     return (
       <div>
@@ -41,3 +41,5 @@ export default React.createClass({
     )
   }
 })
+
+export { Leaderboard }

@@ -1,8 +1,12 @@
-//to be expanded when styles
-export default ({errorMessage}) => {
-  return (
-   <div>
-     {errorMessage}
-   </div>
-  )
+import React from 'react'
+// to be expanded when styles
+const ErrorMessageBanner = ({ errorMessage }) =>
+  <div>
+    {errorMessage}
+  </div>
+
+ErrorMessageBanner.propTypes = {
+  errorMessage: React.PropTypes.string,
 }
+
+export { ErrorMessageBanner }
