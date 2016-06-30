@@ -10,7 +10,6 @@ const signIn = (req, res) => {
       const uid = decodedToken.sub
       const session = req.session
       session.currentUser = uid
-      console.log(`setting session currentUser to ${uid}`)
       return res.send()
     })
     .catch(error => {
