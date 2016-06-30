@@ -1,20 +1,13 @@
 import React from 'react'
-import Helmet from 'react-helmet'
 import Login from './Login'
 import Register from './Register'
-import {getFirebase} from 'src/lib/firebaseAdapter'
-import {browserHistory} from 'react-router'
+import { getFirebase } from 'src/lib/firebaseAdapter'
+import { browserHistory } from 'react-router'
 
 export default class extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {login: true}
-  }
-
-  toggle = (e) => {
-    e.preventDefault();
-    const isLoginPage = this.state.login;
-    this.setState({login: !isLoginPage})
+    this.state = { login: true }
   }
 
   componentDidMount() {
@@ -23,10 +16,16 @@ export default class extends React.Component {
     }
   }
 
+  toggle = (e) => {
+    e.preventDefault()
+    const isLoginPage = this.state.login
+    this.setState({ login: !isLoginPage })
+  }
+
   render() {
     return (
       <div>
-        {(this.state.login) ? <Login toggle={this.toggle}/> : <Register toggle={this.toggle}/> }
+        {(this.state.login) ? <Login toggle={this.toggle} /> : <Register toggle={this.toggle} />}
       </div>
     )
   }

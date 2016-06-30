@@ -26,8 +26,8 @@ export default class extends React.Component {
   render() {
     return (
       <div id="leaderboard">
-        <Leaderboard title="March leaderboard" leaders={this.state.monthlyLeaders}/>
-        <Leaderboard title="Weekly leaders"    leaders={this.state.weeklyLeaders}/>
+        <Leaderboard title="March leaderboard" leaders={this.state.monthlyLeaders} />
+        <Leaderboard title="Weekly leaders"    leaders={this.state.weeklyLeaders} />
       </div>
     )
   }
