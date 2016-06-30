@@ -57,7 +57,6 @@
     "babel-eslint": "^6.1.0",
     "babel-preset-react-hmre": "^1.1.0",
     "bootstrap": "^4.0.0-alpha.2",
-    "bootstrap-sass": "^3.3.6",
     "chai": "^3.5.0",
     "clean-webpack-plugin": "^0.1.6",
     "eslint": "^2.13.1",
