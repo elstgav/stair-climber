@@ -2,15 +2,14 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import Config from 'src/config'
 
-
-const AppContainer = ({ children }) =>
+const Layout = ({ children }) =>
   <div id="AppContainer">
     <Helmet {...Config.app.head} />
     {children}
   </div>
 
-AppContainer.propTypes = {
+Layout.propTypes = {
   children: React.PropTypes.object,
 }
 
-export { AppContainer }
+export { Layout }
