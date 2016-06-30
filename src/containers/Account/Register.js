@@ -27,7 +27,12 @@ export class Register extends React.Component {
     const self = this
     getFirebase().auth()
       .createUserWithEmailAndPassword(this.state.fields.email, this.state.fields.password)
-      .then(() => {
+      .then(user => {
+        getFirebase().database().ref(`users/${user.uid}`)
+          .set({
+            name: this.state.fields.name,
+            homefloor: this.state.fields.homefloor,
+          })
         browserHistory.push('/')
       })
       .catch(error => {
@@ -46,9 +51,12 @@ export class Register extends React.Component {
     return (
       <div>
         <Helmet title="Register" />
-        <RegisterForm handleFormSubmit={this.handleFormSubmit} handleInputChange={this.handleInputChange} toggle={this.props.toggle} />
+        <RegisterForm
+          handleFormSubmit={this.handleFormSubmit}
+          handleInputChange={this.handleInputChange} toggle={this.props.toggle}
+        />
         {this.state.error && <ErrorMessageBanner errorMessage={this.state.error} />}
       </div>
-    )
+  )
   }
 }
