@@ -3,21 +3,16 @@ import path from 'path'
 import Express from 'express'
 import compression from 'compression'
 import bodyParser from 'body-parser'
-// import favicon from 'serve-favicon'
 
-import Config from '_/src/config'
-import HotLoader from '_/src/lib/HotLoader'
+import Config from 'src/config'
+import HotLoader from 'src/lib/HotLoader'
 
-// React And Redux Setup
 import React from 'react'
-import ReactDOM from 'react-dom/server'
-import configureStore from '_/src/lib/configureStore'
-import { Provider } from 'react-redux'
+import { renderToString } from 'react-dom/server'
 import { match, RouterContext } from 'react-router'
 
-import routes from '_/src/routes'
-import { fetchComponentData } from '_/src/lib/fetchComponentData'
-import HTML from '_/src/lib/HTML'
+import routes from 'src/routes'
+import Html from 'src/lib/Html'
 
 const app = new Express()
 
@@ -36,28 +31,10 @@ app.use((req, res) => {
     if (error)    return res.status(500).end('Internal server error')
     if (!props)   return res.status(404).end('Not found!')
     if (redirect) return res.redirect(redirect.pathname + redirect.search)
-
-    const store = configureStore()
-
-    fetchComponentData(store.dispatch, props.components, props.params)
-      .then(() => {
-        const component = (
-          <Provider store={store} key='provider'>
-            <RouterContext {...props} />
-          </Provider>
-        )
-
-        res.status(200).send(
-          '<!doctype html>\n' +
-          ReactDOM.renderToString(
-            <HTML content={component} store={store}/>
-          )
-        )
-      })
-      .catch(() => {
-        console.log('Unable to fetch data store') // eslint-disable-line
-        res.status(500).end('Internal server error')
-      })
+    return res.status(200).send(
+      `<!doctype html>
+      ${renderToString(<Html content={<RouterContext {...props} />} />)}`
+    )
   })
 })
 
