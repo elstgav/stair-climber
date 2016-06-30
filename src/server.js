@@ -40,9 +40,11 @@ app.use((req, res) => {
     return res.redirect('/')
   }
 
+  /*
   if (!req.session.currentUser && req.url !== '/account') {
     return res.redirect('/account')
   }
+  */
 
 
   match({ routes, location: req.url }, (error, redirect, props) => {
