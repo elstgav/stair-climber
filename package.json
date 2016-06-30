@@ -11,11 +11,13 @@
   },
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:dev": "NODE_ENV=development node index.js",
+    "start:dev": "NODE_ENV=development npm run watch-sass & node index.js",
     "start:prod": "NODE_ENV=production npm run build && node index.js",
-    "build": "NODE_ENV=production webpack --verbose --colors --display-error-details --config webpack.config.prod.js",
+    "build": "NODE_ENV=production webpack --verbose --colors --display-error-details --config webpack.config.prod.js && npm run build-sass",
     "test": "./node_modules/mocha/bin/mocha --recursive",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "watch-sass": "./node_modules/node-sass/bin/node-sass -w src/stylesheets/main.scss public/style.css",
+    "build-sass": "./node_modules/node-sass/bin/node-sass src/stylesheets/main.scss public/style.css"
   },
   "dependencies": {
     "axios": "^0.9.1",
