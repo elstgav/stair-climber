@@ -4,7 +4,7 @@ import { LoginForm, ErrorMessageBanner } from 'src/components'
 import { getFirebase } from 'src/lib/firebaseAdapter'
 import { browserHistory } from 'react-router'
 
-export default class extends React.Component {
+export class Login extends React.Component {
   static propTypes = {
     toggle: React.PropTypes.func.isRequired,
   }
