@@ -1,10 +1,6 @@
-import { getFirebase } from '../firebaseAdapter'
-import firebase from 'firebase'
+import { getFirebase } from './firebaseServerAdapter'
 
 const signIn = (req, res) => {
-  firebase.initializeApp({
-    serviceAccount: 'src/lib/server/serviceAccount.json',
-  })
   const idToken = req.body.idToken
   if (!idToken) {
     return (res.send())
