@@ -35,4 +35,4 @@ RegisterForm.propTypes = {
   toggle: React.PropTypes.func.isRequired,
 }
 
-export default RegisterForm
+export { RegisterForm }

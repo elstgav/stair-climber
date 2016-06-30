@@ -40,4 +40,4 @@ const OldLeaderboard = React.createClass({
   }
 })
 
-export default OldLeaderboard
+export { OldLeaderboard }

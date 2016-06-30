@@ -23,4 +23,4 @@ LoginForm.propTypes = {
   toggle: React.PropTypes.func.isRequired,
 }
 
-export default LoginForm
+export { LoginForm }

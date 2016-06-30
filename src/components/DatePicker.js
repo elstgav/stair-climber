@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 
-export default function DatePicker({ selected, onChange }) {
+const DatePicker = ({ selected, onChange }) => {
   function onPrevDay() {
     const newDate = selected.clone().subtract(1, 'days')
     onChange(newDate)
@@ -38,3 +38,5 @@ DatePicker.defaultProps = {
   selected: moment(),
   onChange() {},
 }
+
+export { DatePicker }

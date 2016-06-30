@@ -41,4 +41,4 @@ const FlightsForm = React.createClass({
   }
 })
 
-export default FlightsForm
+export { FlightsForm }
