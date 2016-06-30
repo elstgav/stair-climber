@@ -3,8 +3,6 @@ import routes from './routes'
 import { render } from 'react-dom'
 import { Router, browserHistory } from 'react-router'
 
-require('./stylesheets/main.scss')
-
 const dest = document.getElementById('app')
 
 render((

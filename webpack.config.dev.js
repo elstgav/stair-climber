@@ -29,14 +29,6 @@ module.exports = _.extend({}, base, {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel?presets[]=react-hmre',
-      },
-      {
-        test: /\.scss$/,
-        loaders: ['style', 'css', 'sass'],
-      },
-      {
-        test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/,
-        loader: 'url-loader',
       }
     ),
   },
