@@ -1,5 +1,6 @@
 import React from 'react'
 import { getFirebase } from 'src/lib/firebaseAdapter'
+import axios from 'axios'
 
 export class Logout extends React.Component {
   compnentDidMount() {
@@ -12,7 +13,10 @@ export class Logout extends React.Component {
       .auth()
       .signOut()
       .then(() => {
-        location.pathname = '/account' // force server refresh so they cannot navigate "back"
+        axios.get('/account/logout')
+          .then(_response => {
+            location.pathname = '/account' // force server refresh so they cannot navigate "back"
+          })
       }, (error) => {
         console.log(error)
       })
