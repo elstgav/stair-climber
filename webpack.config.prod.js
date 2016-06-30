@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const CleanPlugin = require('clean-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   cache: true,
@@ -36,6 +37,7 @@ module.exports = {
         NODE_ENV: JSON.stringify('production'),
       },
     }),
+    new ExtractTextPlugin('style.css', { allChunks: true }),
   ],
 
   module: {
@@ -44,7 +46,11 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel',
-      }
+      },
+      {
+        test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/,
+        loader: 'url-loader',
+      },
     ],
   },
 

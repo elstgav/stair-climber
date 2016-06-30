@@ -3,6 +3,7 @@ import Helmet from 'react-helmet'
 import { RegisterForm, ErrorMessageBanner } from 'src/components'
 import { getFirebase } from 'src/lib/firebaseAdapter'
 import { browserHistory } from 'react-router'
+import axios from 'axios'
 
 export class Register extends React.Component {
   static propTypes = {
@@ -32,6 +33,17 @@ export class Register extends React.Component {
           .set({
             name: this.state.fields.name,
             homefloor: this.state.fields.homefloor,
+          })
+          .then(() => {
+            user.getToken(true)
+              .then((idToken) => {
+                axios.post('/account/login', {
+                  idToken,
+                })
+                .then(_response => {
+                  browserHistory.push('/')
+                })
+              })
           })
         browserHistory.push('/')
       })
