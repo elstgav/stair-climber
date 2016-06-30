@@ -1,5 +1,3 @@
-import './stylesheets/main.scss'
-
 import React from 'react'
 import routes from './routes'
 import { render } from 'react-dom'
