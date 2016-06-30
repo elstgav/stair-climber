@@ -11,6 +11,9 @@ export default {
         { charset: 'utf-8' },
         { name: 'description', content: 'Track your stair climbing at Avvo.' },
       ],
+      link: [
+        { rel: 'stylesheet', type: 'text/css', href: '/css/style.css' },
+      ],
     },
   },
 }

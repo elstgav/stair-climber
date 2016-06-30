@@ -3,6 +3,8 @@ import Helmet from 'react-helmet'
 import { LoginForm, ErrorMessageBanner } from 'src/components'
 import { getFirebase } from 'src/lib/firebaseAdapter'
 import { browserHistory } from 'react-router'
+import axios from 'axios'
+
 
 export class Login extends React.Component {
   static propTypes = {
@@ -26,8 +28,16 @@ export class Login extends React.Component {
     getFirebase()
       .auth()
       .signInWithEmailAndPassword(this.state.fields.email, this.state.fields.password)
-      .then(_user => {
-        browserHistory.push('/')
+      .then(user => {
+        user.getToken(true)
+        .then((idToken) => {
+          axios.post('/account/login', {
+            idToken,
+          })
+          .then(_response => {
+            browserHistory.push('/')
+          })
+        })
       })
       .catch(error => {
         this.setState({ error: error.message })
