@@ -11,9 +11,11 @@ export class LoginRegister extends React.Component {
   }
 
   componentDidMount() {
-    if (getFirebase().auth().currentUser) {
-      browserHistory.push('/')
-    }
+    getFirebase().auth().onAuthStateChanged((user) => {
+      if (user) {
+        browserHistory.push('/')
+      }
+    })
   }
 
   toggle = (e) => {
