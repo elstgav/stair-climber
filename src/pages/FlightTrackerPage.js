@@ -12,7 +12,7 @@ import {
 } from 'src/components'
 
 
-export default React.createClass({
+export const FlightTrackerPage = React.createClass({
   getInitialState() {
     return {
       entryDate: moment(),
