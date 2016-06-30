@@ -2,41 +2,41 @@ import React from 'react'
 import moment from 'moment'
 import Helmet from 'react-helmet'
 
-import FlightTracker from '_/src/lib/FlightTracker'
-import People        from '_/src/lib/People'
+import FlightTracker from 'src/lib/FlightTracker'
+import People        from 'src/lib/People'
 
 import {
   DatePicker,
   FlightsForm,
-  OldLeaderboard
-} from '_/src/components'
+  OldLeaderboard,
+} from 'src/components'
 
 
-export default React.createClass({
+export const FlightTrackerPage = React.createClass({
   getInitialState() {
     return {
       entryDate: moment(),
-      person: People.get(0)
+      person: People.get(0),
     }
   },
 
   onEntryDateChanged(date) {
     this.setState({
-      entryDate: date
+      entryDate: date,
     })
   },
 
   onFlightsChanged(flights) {
     this.state.person.flightsClimbed.set(this.state.entryDate, flights)
     this.setState({
-      person: this.state.person
+      person: this.state.person,
     })
   },
 
   onPersonChanged(event) {
     let personId = parseInt(event.target.value)
     this.setState({
-      person: People.get(personId)
+      person: People.get(personId),
     })
   },
 

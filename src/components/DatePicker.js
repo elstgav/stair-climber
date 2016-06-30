@@ -1,46 +1,42 @@
 import React from 'react'
 import moment from 'moment'
 
-const DatePicker = React.createClass({
-  propTypes: {
-    selected: React.PropTypes.object,
-    onChange: React.PropTypes.func.isRequired
-  },
-
-  getDefaultProps() {
-    return {
-      selected: moment(),
-      onChange() {}
-    }
-  },
-
-  onPrevDay() {
-    let newDate = this.props.selected.clone().subtract(1, 'days')
-    this.props.onChange(newDate)
-  },
-
-  onNextDay() {
-    let newDate = this.props.selected.clone().add(1, 'days')
-    this.props.onChange(newDate)
-  },
-
-  onTodayClicked() {
-    this.props.onChange(moment())
-  },
-
-  render() {
-    return (
-      <div>
-        <div>
-          <button onClick={this.onPrevDay}>Previous day</button>
-          <span>{this.props.selected.format('ddd, MMM D')}</span>
-          <button onClick={this.onNextDay}>Next day</button>
-        </div>
-
-        <button onClick={this.onTodayClicked}>Today</button>
-      </div>
-    )
+const DatePicker = ({ selected, onChange }) => {
+  function onPrevDay() {
+    const newDate = selected.clone().subtract(1, 'days')
+    onChange(newDate)
   }
-})
 
-export default DatePicker
+  function onNextDay() {
+    const newDate = selected.clone().add(1, 'days')
+    onChange(newDate)
+  }
+
+  function onTodayClicked() {
+    onChange(moment())
+  }
+
+  return (
+    <div>
+      <div>
+        <button onClick={onPrevDay}>Previous day</button>
+        <span> {selected.format('ddd, MMM D')} </span>
+        <button onClick={onNextDay}>Next day</button>
+      </div>
+
+      <button onClick={onTodayClicked}>Today</button>
+    </div>
+  )
+}
+
+DatePicker.propTypes = {
+  selected: React.PropTypes.object,
+  onChange: React.PropTypes.func.isRequired,
+}
+
+DatePicker.defaultProps = {
+  selected: moment(),
+  onChange() {},
+}
+
+export { DatePicker }

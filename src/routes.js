@@ -1,13 +1,13 @@
 import { Route, IndexRoute } from 'react-router'
 import React from 'react'
 import {
-  AppContainer
+  AppContainer,
 } from './containers'
 
 import {
   AccountPage,
   FlightTrackerPage,
-  LeaderboardPage
+  LeaderboardPage,
 } from './pages'
 
 export default (
