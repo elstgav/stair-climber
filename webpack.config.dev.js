@@ -24,10 +24,16 @@ module.exports = _.extend({}, base, {
   ],
 
   module: {
-    loaders: base.module.loaders.concat({
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loader: 'babel?presets[]=react-hmre',
-    }),
+    loaders: base.module.loaders.concat(
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel?presets[]=react-hmre',
+      },
+      {
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'sass'],
+      }
+    ),
   },
 })
