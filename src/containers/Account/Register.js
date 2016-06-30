@@ -4,7 +4,7 @@ import { RegisterForm, ErrorMessageBanner } from 'src/components'
 import { getFirebase } from 'src/lib/firebaseAdapter'
 import { browserHistory } from 'react-router'
 
-export default class extends React.Component {
+export class Register extends React.Component {
   static propTypes = {
     toggle: React.PropTypes.func.isRequired,
   }

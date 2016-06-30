@@ -13,4 +13,4 @@ AppContainer.propTypes = {
   children: React.PropTypes.object,
 }
 
-export default AppContainer
+export { AppContainer }

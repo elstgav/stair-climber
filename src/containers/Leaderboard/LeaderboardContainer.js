@@ -2,7 +2,7 @@ import React from 'react'
 import Axios from 'axios'
 import { Leaderboard } from 'src/components'
 
-export default class extends React.Component {
+export class LeaderboardContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
