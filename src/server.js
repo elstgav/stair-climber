@@ -27,6 +27,7 @@ app.use(Express.static(path.resolve(__dirname, '../public')))
 
 // Server Side Rendering based on routes matched by React-router.
 app.use((req, res) => {
+  console.log(`receiving request: ${req.url}`)
   match({ routes, location: req.url }, (error, redirect, props) => {
     if (error)    return res.status(500).end('Internal server error')
     if (!props)   return res.status(404).end('Not found!')
