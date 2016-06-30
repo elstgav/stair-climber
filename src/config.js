@@ -12,7 +12,7 @@ export default {
         { name: 'description', content: 'Track your stair climbing at Avvo.' },
       ],
       link: [
-        { rel: 'stylesheet', type: 'text/css', href: '/css/style.css' },
+        { rel: 'stylesheet', type: 'text/css', href: '/style.css' },
       ],
     },
   },
