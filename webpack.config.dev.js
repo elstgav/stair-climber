@@ -1,6 +1,7 @@
 const base = require('./webpack.config.prod')
 const webpack = require('webpack')
 const _ = require('lodash')
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = _.extend({}, base, {
   devtool: 'cheap-module-eval-source-map',
@@ -21,6 +22,7 @@ module.exports = _.extend({}, base, {
         NODE_ENV: JSON.stringify('development'),
       },
     }),
+    new ExtractTextPlugin('style.css', { allChunks: true }),
   ],
 
   module: {
@@ -32,7 +34,8 @@ module.exports = _.extend({}, base, {
       },
       {
         test: /\.scss$/,
-        loaders: ['style', 'css', 'sass'],
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader'),
+
       },
       {
         test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/,
