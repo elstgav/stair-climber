@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { Icon } from 'src/components'
+
 export function FlightsForm({ homeFloor, value, onChange }) {
   function onFlightsChanged(event) {
     const flights = parseFloat(event.target.value)
@@ -26,11 +28,15 @@ export function FlightsForm({ homeFloor, value, onChange }) {
     <div>
       <div className="input-group">
         <span className="input-group-btn">
-          <button className="btn btn-secondary" onClick={subtractFlight} type="button">-</button>
+          <button className="btn btn-secondary" onClick={subtractFlight} type="button">
+            <Icon name="minus" />
+          </button>
         </span>
         <input type="number" className="form-control" value={value} onChange={onFlightsChanged} />
         <span className="input-group-btn">
-          <button className="btn btn-secondary" onClick={addFlight} type="button">+</button>
+          <button className="btn btn-secondary" onClick={addFlight} type="button">
+            <Icon name="plus" />
+          </button>
         </span>
       </div>
       <button className="btn btn-block btn-primary" onClick={onAddDefaultFlights}>
