@@ -55,6 +55,7 @@
     "redis": "^2.6.2",
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",
+    "typecheck": "^0.1.2",
     "webpack": "^1.13.1",
     "webpack-dev-middleware": "^1.5.1",
     "webpack-dev-server": "^1.14.1",

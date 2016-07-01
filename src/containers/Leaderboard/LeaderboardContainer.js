@@ -96,7 +96,7 @@ export class LeaderboardContainer extends React.Component {
 
   render() {
     return (
-      <div id="leaderboard">
+      <div id="leaderboard" className="container">
         <Leaderboard title="March leaderboard" leaders={this.state.monthlyLeaders} />
         <Leaderboard title="Weekly leaders"    leaders={this.state.weeklyLeaders} />
       </div>

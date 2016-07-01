@@ -20,6 +20,7 @@ import { match, RouterContext } from 'react-router'
 import routes from 'src/routes'
 import Html from 'src/lib/Html'
 import { signIn, logOut } from 'src/lib/server/account'
+import { DataWrapper } from 'src/components'
 
 const app = new Express()
 
@@ -45,12 +46,13 @@ app.get('/account/logout', logOut)
 // Server Side Rendering based on routes matched by React-router.
 app.use((req, res) => {
   console.log(`receiving request: ${req.url}`)
+  const currentUser = req.session.currentUser
 
-  if (req.session.currentUser && req.url === '/account') {
+  if (currentUser && req.url === '/account') {
     return res.redirect('/')
   }
 
-  if (!req.session.currentUser && req.url !== '/account') {
+  if (!currentUser && req.url !== '/account') {
     return res.redirect('/account')
   }
 
@@ -61,7 +63,12 @@ app.use((req, res) => {
     if (redirect) return res.redirect(redirect.pathname + redirect.search)
     return res.status(200).send(
       `<!doctype html>
-      ${renderToString(<Html content={<RouterContext {...props} />} />)}`
+      ${renderToString(<Html
+        content={<DataWrapper data={{ currentUser }}>
+          <RouterContext {...props} /></DataWrapper>
+        }
+        data={{ currentUser }}
+      />)}`
     )
   })
 })

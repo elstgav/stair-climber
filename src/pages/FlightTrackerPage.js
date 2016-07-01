@@ -13,8 +13,8 @@ import {
 
 
 export class FlightTrackerPage extends React.Component {
-  constructor(props) {
-    super(props)
+  constructor(props, context) {
+    super(props, context)
     this.state = {
       entryDate: moment(),
       person: new Person({}),
@@ -71,10 +71,8 @@ export class FlightTrackerPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         {<Helmet title="Home" />}
-
-        <h1>StepUp</h1>
 
         {this.state.user && <p>Hello {this.state.user.name}!</p>}
 
@@ -90,4 +88,8 @@ export class FlightTrackerPage extends React.Component {
       </div>
     )
   }
+}
+
+FlightTrackerPage.contextTypes = {
+  data: React.PropTypes.object,
 }

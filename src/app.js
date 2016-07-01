@@ -2,11 +2,14 @@ import React from 'react'
 import routes from './routes'
 import { render } from 'react-dom'
 import { Router, browserHistory } from 'react-router'
-
+import { DataWrapper } from 'src/components'
+const data  = JSON.parse(document.getElementById('data').innerHTML)
 const dest = document.getElementById('app')
 
 render((
-  <Router history={browserHistory} routes={routes} />
+  <DataWrapper data={data}>
+    <Router history={browserHistory} routes={routes} />
+  </DataWrapper>
 ), dest)
 
 if (process.env.NODE_ENV !== 'production') {
