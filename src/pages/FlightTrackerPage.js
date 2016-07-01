@@ -2,16 +2,13 @@ import React from 'react'
 import moment from 'moment'
 import Helmet from 'react-helmet'
 
-import FlightTracker from 'src/lib/FlightTracker'
-import People        from 'src/lib/People'
+import Person        from 'src/lib/Person'
 
 import { getFirebase } from 'src/lib/firebaseAdapter'
 
 import {
   DatePicker,
   FlightsForm,
-  /* OldLeaderboard,
-   * UserPicker,*/
 } from 'src/components'
 
 
@@ -20,7 +17,7 @@ export class FlightTrackerPage extends React.Component {
     super(props)
     this.state = {
       entryDate: moment(),
-      person: People.get(0),
+      person: new Person({}),
     }
   }
 
@@ -44,14 +41,8 @@ export class FlightTrackerPage extends React.Component {
 
   onFlightsChanged = (flights) => {
     this.state.person.flightsClimbed.set(this.state.entryDate, flights)
-    this.setState({
-      person: this.state.person,
-    })
+    this.setState({ person: this.state.person })
     this.setFlightsClimbed(flights, this.state.user.uid, this.state.entryDate.format('YYYY-MM-DD'))
-  }
-
-  onPersonChanged = (person) => {
-    this.setState({ person })
   }
 
   getFlightsClimbed = (uid, date) => {
@@ -64,9 +55,7 @@ export class FlightTrackerPage extends React.Component {
                      console.log('Getting:', `flights/${uid}/${date}`, data)
                      this.state.person.flightsClimbed.set(
                        this.state.entryDate, data.flights_climbed)
-                     this.setState({
-                       person: this.state.person,
-                     })
+                     this.setState({ person: this.state.person })
                    }
                  })
   }
