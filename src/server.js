@@ -4,6 +4,11 @@ import Express from 'express'
 import compression from 'compression'
 import bodyParser from 'body-parser'
 import session from 'express-session'
+const RedisStore = require('connect-redis')(session);
+const redisOptions = {
+  client: require('redis').createClient(process.env.REDIS_URL),
+  disableTTL: true,
+}
 
 import Config from 'src/config'
 import HotLoader from 'src/lib/HotLoader'
@@ -21,7 +26,12 @@ const app = new Express()
 HotLoader.init(app)
 
 app.use(compression())
-app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
+
+app.use(session({
+  store: new RedisStore(redisOptions),
+  secret: 'keyboard cat',
+}))
+
 app.use(bodyParser.json({ limit: '20mb' }))
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }))
 // app.use(favicon(path.resolve(__dirname, '../public/favicon.ico')))
@@ -40,11 +50,9 @@ app.use((req, res) => {
     return res.redirect('/')
   }
 
-  /*
   if (!req.session.currentUser && req.url !== '/account') {
     return res.redirect('/account')
   }
-  */
 
 
   match({ routes, location: req.url }, (error, redirect, props) => {
