@@ -2,16 +2,13 @@ import React from 'react'
 import moment from 'moment'
 import Helmet from 'react-helmet'
 
-import FlightTracker from 'src/lib/FlightTracker'
-import People        from 'src/lib/People'
+import Person        from 'src/lib/Person'
 
 import { getFirebase } from 'src/lib/firebaseAdapter'
 
 import {
   DatePicker,
   FlightsForm,
-  /* OldLeaderboard,
-   * UserPicker,*/
 } from 'src/components'
 
 
@@ -20,18 +17,23 @@ export class FlightTrackerPage extends React.Component {
     super(props, context)
     this.state = {
       entryDate: moment(),
-      person: People.get(0),
-      uid: context.data.currentUser,
+      person: new Person({}),
     }
   }
 
   componentDidMount() {
-    getFirebase().database()
-      .ref(`users/${this.state.uid}`)
-      .on('value', snapshot => {
-        this.setState({ user: Object.assign({}, snapshot.val(), { uid: this.state.uid }) })
-        this.getFlightsClimbed(this.state.uid, this.state.entryDate.format('YYYY-MM-DD'))
-      })
+    getFirebase().auth().onAuthStateChanged(user => {
+      if (user) {
+        getFirebase().database()
+          .ref(`users/${user.uid}`)
+          .on('value', snapshot => {
+            this.setState({ user: Object.assign({}, snapshot.val(), { uid: user.uid }) })
+            this.getFlightsClimbed(this.state.user.uid, this.state.entryDate.format('YYYY-MM-DD'))
+            this.state.person.homeFloor = this.state.user.homeFloor
+            this.setState({ person: this.state.person })
+          })
+      }
+    })
   }
 
   onEntryDateChanged = (entryDate) => {
@@ -41,14 +43,8 @@ export class FlightTrackerPage extends React.Component {
 
   onFlightsChanged = (flights) => {
     this.state.person.flightsClimbed.set(this.state.entryDate, flights)
-    this.setState({
-      person: this.state.person,
-    })
+    this.setState({ person: this.state.person })
     this.setFlightsClimbed(flights, this.state.user.uid, this.state.entryDate.format('YYYY-MM-DD'))
-  }
-
-  onPersonChanged = (person) => {
-    this.setState({ person })
   }
 
   getFlightsClimbed = (uid, date) => {
@@ -61,9 +57,7 @@ export class FlightTrackerPage extends React.Component {
                      console.log('Getting:', `flights/${uid}/${date}`, data)
                      this.state.person.flightsClimbed.set(
                        this.state.entryDate, data.flights_climbed)
-                     this.setState({
-                       person: this.state.person,
-                     })
+                     this.setState({ person: this.state.person })
                    }
                  })
   }
