@@ -9,3 +9,4 @@ export { UserPicker }                 from './FlightTracker/UserPicker'
 export { Leaderboard }                from './Leaderboard/Leaderboard'
 
 export { ErrorMessageBanner }         from './ErrorMessageBanner'
+export { Icon }                       from './Icon'
