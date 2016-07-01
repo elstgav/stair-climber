@@ -16,25 +16,22 @@ import {
 
 
 export class FlightTrackerPage extends React.Component {
-  constructor(props) {
-    super(props)
+  constructor(props, context) {
+    super(props, context)
     this.state = {
       entryDate: moment(),
       person: People.get(0),
+      uid: context.data.currentUser,
     }
   }
 
   componentDidMount() {
-    getFirebase().auth().onAuthStateChanged(user => {
-      if (user) {
-        getFirebase().database()
-          .ref(`users/${user.uid}`)
-          .on('value', snapshot => {
-            this.setState({ user: Object.assign({}, snapshot.val(), { uid: user.uid }) })
-            this.getFlightsClimbed(this.state.user.uid, this.state.entryDate.format('YYYY-MM-DD'))
-          })
-      }
-    })
+    getFirebase().database()
+      .ref(`users/${this.state.uid}`)
+      .on('value', snapshot => {
+        this.setState({ user: Object.assign({}, snapshot.val(), { uid: this.state.uid }) })
+        this.getFlightsClimbed(this.state.uid, this.state.entryDate.format('YYYY-MM-DD'))
+      })
   }
 
   onEntryDateChanged = (entryDate) => {
@@ -99,4 +96,8 @@ export class FlightTrackerPage extends React.Component {
       </div>
     )
   }
+}
+
+FlightTrackerPage.contextTypes = {
+  data: React.PropTypes.object,
 }

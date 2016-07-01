@@ -3,7 +3,7 @@ import { renderToString } from 'react-dom/server'
 import Helmet from 'react-helmet'
 
 
-export default function Html({ content }) {
+export default function Html({ content, data}) {
   const renderedContent = content ? renderToString(content) : ''
   const head = Helmet.rewind()
 
@@ -18,6 +18,7 @@ export default function Html({ content }) {
         <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
       </head>
       <body>
+        <div className="hidden-xs-up" id="data" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
         <div id="app" dangerouslySetInnerHTML={{ __html: renderedContent }} />
         <script src="/app.js" charSet="UTF-8" />
       </body>

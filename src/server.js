@@ -65,7 +65,9 @@ app.use((req, res) => {
       `<!doctype html>
       ${renderToString(<Html
         content={<DataWrapper data={{ currentUser }}>
-          <RouterContext {...props} /></DataWrapper>}
+          <RouterContext {...props} /></DataWrapper>
+        }
+        data={{ currentUser }}
       />)}`
     )
   })
