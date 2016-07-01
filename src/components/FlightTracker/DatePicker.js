@@ -1,6 +1,8 @@
 import React from 'react'
 import moment from 'moment'
 
+import { Icon } from 'src/components'
+
 const DatePicker = ({ selected, onChange }) => {
   function onPrevDay() {
     const newDate = selected.clone().subtract(1, 'days')
@@ -19,9 +21,13 @@ const DatePicker = ({ selected, onChange }) => {
   return (
     <div>
       <div className="input-group">
-        <button className="btn btn-secondary" onClick={onPrevDay}>&lt;</button>
+        <button className="btn btn-secondary" onClick={onPrevDay}>
+          <Icon name="chevron-left" />
+        </button>
         <span> {selected.format('ddd, MMM D')} </span>
-        <button className="btn btn-secondary" onClick={onNextDay}>&gt;</button>
+        <button className="btn btn-secondary" onClick={onNextDay}>
+          <Icon name="chevron-right" />
+        </button>
       </div>
 
       <button onClick={onTodayClicked}>Today</button>
