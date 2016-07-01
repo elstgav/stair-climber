@@ -39,6 +39,7 @@ export class FlightTrackerPage extends React.Component {
 
   onEntryDateChanged = (entryDate) => {
     this.setState({ entryDate })
+    this.getFlightsClimbed(this.state.user.uid, entryDate.format('YYYY-MM-DD'))
   }
 
   onFlightsChanged = (flights) => {
@@ -59,11 +60,14 @@ export class FlightTrackerPage extends React.Component {
                  .once('value')
                  .then(snapshot => {
                    const data = snapshot.val()
-                   console.log('Getting:', `flights/${uid}/${date}`, data)
-                   this.state.person.flightsClimbed.set(this.state.entryDate, data.flights_climbed)
-                   this.setState({
-                     person: this.state.person,
-                   })
+                   if (data) {
+                     console.log('Getting:', `flights/${uid}/${date}`, data)
+                     this.state.person.flightsClimbed.set(
+                       this.state.entryDate, data.flights_climbed)
+                     this.setState({
+                       person: this.state.person,
+                     })
+                   }
                  })
   }
 
