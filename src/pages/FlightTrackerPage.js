@@ -5,6 +5,8 @@ import Helmet from 'react-helmet'
 import FlightTracker from 'src/lib/FlightTracker'
 import People        from 'src/lib/People'
 
+import { getFirebase } from 'src/lib/firebaseAdapter'
+
 import {
   DatePicker,
   FlightsForm,
@@ -20,6 +22,18 @@ export class FlightTrackerPage extends React.Component {
       entryDate: moment(),
       person: People.get(0),
     }
+  }
+
+  componentDidMount() {
+    getFirebase().auth().onAuthStateChanged(user => {
+      if (user) {
+        getFirebase().database()
+          .ref(`users/${user.uid}`)
+          .on('value', snapshot => {
+            this.setState({ user: snapshot.val() })
+          })
+      }
+    })
   }
 
   onEntryDateChanged = (entryDate) => {
@@ -44,6 +58,7 @@ export class FlightTrackerPage extends React.Component {
 
         <h1>StepUp</h1>
 
+        {this.state.user && <p>Hello {this.state.user.name}!</p>}
         <UserPicker user={this.state.person} onChange={this.onPersonChanged} />
 
         <DatePicker
