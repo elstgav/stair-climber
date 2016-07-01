@@ -10,4 +10,5 @@ export { Leaderboard }                from './Leaderboard/Leaderboard'
 
 export { ErrorMessageBanner }         from './ErrorMessageBanner'
 export { Icon }                       from './Icon'
+export { Logo }                       from './Logo'
 export { DataWrapper }                from './DataWrapper'

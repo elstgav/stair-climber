@@ -77,10 +77,8 @@ export class FlightTrackerPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         {<Helmet title="Home" />}
-
-        <h1>StepUp</h1>
 
         {this.state.user && <p>Hello {this.state.user.name}!</p>}
 
