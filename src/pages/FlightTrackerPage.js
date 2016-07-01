@@ -9,6 +9,7 @@ import { getFirebase } from 'src/lib/firebaseAdapter'
 
 import {
   DatePicker,
+  DateTotal,
   FlightsForm,
   /* OldLeaderboard,
    * UserPicker,*/
@@ -80,12 +81,11 @@ export class FlightTrackerPage extends React.Component {
       <div className="container">
         {<Helmet title="Home" />}
 
-        {this.state.user && <p>Hello {this.state.user.name}!</p>}
-
         <DatePicker
           selected={this.state.entryDate}
           onChange={this.onEntryDateChanged}
         />
+        <DateTotal date={this.state.entryDate} total={this.state.person.flightsClimbed.get(this.state.entryDate)} />
         <FlightsForm
           homeFloor={this.state.person.homeFloor}
           value={this.state.person.flightsClimbed.get(this.state.entryDate)}
