@@ -10,8 +10,8 @@ const LeaderboardListElement = ({ rank, leader }) => {
   return (
     <tr>
       <td>{rank}</td>
-      <td>{leader.full_name}</td>
-      <td>{elevation(leader.total_flights)}</td>
+      <td>{leader.name}</td>
+      <td>{elevation(leader.total)}</td>
     </tr>
   )
 }
