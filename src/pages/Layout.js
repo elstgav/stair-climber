@@ -3,7 +3,7 @@ import Helmet from 'react-helmet'
 import Config from 'src/config'
 
 const Layout = ({ children }) =>
-  <div id="AppContainer">
+  <div id="AppContainer" className="container">
     <Helmet {...Config.app.head} />
     {children}
   </div>

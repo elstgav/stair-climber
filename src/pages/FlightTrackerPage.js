@@ -80,7 +80,7 @@ export class FlightTrackerPage extends React.Component {
 
   render() {
     return (
-      <div id="FlightTrackerContainer" className="container">
+      <div>
         {<Helmet title="Home" />}
 
         <h1>StepUp</h1>
