@@ -2,19 +2,29 @@ import React from 'react'
 
 const LoginForm = ({ handleFormSubmit, handleInputChange, toggle }) =>
   <form onSubmit={handleFormSubmit}>
-    <div>
-      <label>Email</label>
-    </div>
-    <div>
-      <input onChange={handleInputChange} name="email" type="email" />
-    </div>
-    <div>
-      <label>Password</label>
-    </div>
-    <div>
-      <input onChange={handleInputChange} name="password" type="password" />
-    </div>
-    <button type="submit">Sign In</button>&nbsp;or&nbsp;<a onClick={toggle}>Register</a>
+    <fieldset className="form-group">
+      <label htmlFor="email">Email</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        className="form-control"
+        onChange={handleInputChange}
+      />
+    </fieldset>
+    <fieldset className="form-group">
+      <label htmlFor="password">Password</label>
+      <input
+        id="password"
+        name="password"
+        type="password"
+        className="form-control"
+        onChange={handleInputChange}
+      />
+    </fieldset>
+    <button type="submit" className="btn btn-primary">Sign In</button>
+    {" or "}
+    <a onClick={toggle}>Register</a>
   </form>
 
 LoginForm.propTypes = {
