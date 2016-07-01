@@ -3,7 +3,7 @@ import moment from 'moment'
 
 import { Icon } from 'src/components'
 
-const DatePicker = ({ selected, onChange }) => {
+export function DatePicker({ selected, onChange }) {
   function isToday(date) {
     return date.isSame(moment(), 'day')
   }
@@ -25,17 +25,20 @@ const DatePicker = ({ selected, onChange }) => {
   }
 
   return (
-    <div>
-      <div className="input-group">
-        <button className="btn btn-secondary" onClick={onPrevDay}>
-          <Icon name="chevron-left" />
-        </button>
-        <span> {selected.format('ddd, MMM D')} </span>
-        <button className="btn btn-secondary" onClick={onNextDay} disabled={isToday(selected)}>
-          <Icon name="chevron-right" />
-        </button>
-      </div>
-
+    <div className="date-picker row">
+      <button>
+        <Icon name="calendar" />
+      </button>
+      <button onClick={onPrevDay}>
+        <Icon name="chevron-left" />
+      </button>
+      <span className="selected-date">
+        <span className="month">{selected.format('MMM')}</span>
+        <span className="date">{selected.format('D')}</span>
+      </span>
+      <button onClick={onNextDay} disabled={isToday(selected)}>
+        <Icon name="chevron-right" />
+      </button>
       <button onClick={onTodayClicked}>Today</button>
     </div>
   )
@@ -50,5 +53,3 @@ DatePicker.defaultProps = {
   selected: moment(),
   onChange() {},
 }
-
-export { DatePicker }

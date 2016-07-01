@@ -18,4 +18,63 @@ header .navbar {
 
 body {
   background: $gray-lightest;
+  font-family: Proxima Nova;
+}
+
+
+.date-picker {
+  background-color: $burnt-red;
+  color: white;
+  display: flex;
+
+  button,
+  .selected-date {
+    background: none;
+    color: white;
+    width: 20%;
+    border: 0;
+    text-align: center;
+
+    &:not(:first-child) {
+      border-left: 1px solid mix(white, $burnt-red, 20%);
+    }
+  }
+
+  button {
+    display: flex;
+    justify-content: center;
+  }
+
+  button:hover:not([disabled]) {
+    background-color: rgba(255,255,255,.1);
+  }
+
+  button[disabled] {
+    cursor: default;
+    color: mix($burnt-red, white, 50%);
+  }
+
+  button .icon {
+    font-size: 1.2em;
+    line-height: 1;
+  }
+
+  .selected-date {
+    padding: .5em;
+
+    .month,
+    .date {
+      display: block;
+    }
+
+    .month {
+      text-transform: uppercase;
+    }
+
+    .date {
+      font-size: 1.5em;
+      line-height: .9em;
+      font-weight: 300;
+    }
+  }
 }
