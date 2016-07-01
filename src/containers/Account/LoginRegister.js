@@ -18,7 +18,9 @@ export class LoginRegister extends React.Component {
   render() {
     return (
       <div>
-        {(this.state.login) ? <Login toggle={this.toggle} /> : <Register toggle={this.toggle} />}
+        <div className="container">
+          {(this.state.login) ? <Login toggle={this.toggle} /> : <Register toggle={this.toggle} />}
+        </div>
       </div>
     )
   }
