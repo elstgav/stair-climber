@@ -24,7 +24,7 @@ export function FlightsForm({ homeFloor, value, onChange }) {
 
   return (
     <div>
-      <fieldset className="input-group">
+      <div className="input-group">
         <span className="input-group-btn">
           <button className="btn btn-secondary" onClick={subtractFlight} type="button">-</button>
         </span>
@@ -32,7 +32,7 @@ export function FlightsForm({ homeFloor, value, onChange }) {
         <span className="input-group-btn">
           <button className="btn btn-secondary" onClick={addFlight} type="button">+</button>
         </span>
-      </fieldset>
+      </div>
       <button className="btn btn-block btn-primary" onClick={onAddDefaultFlights}>
         Add {homeFloor} flights
       </button>
