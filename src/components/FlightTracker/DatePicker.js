@@ -18,10 +18,10 @@ const DatePicker = ({ selected, onChange }) => {
 
   return (
     <div>
-      <div>
-        <button onClick={onPrevDay}>Previous day</button>
+      <div className="input-group">
+        <button className="btn btn-secondary" onClick={onPrevDay}>&lt;</button>
         <span> {selected.format('ddd, MMM D')} </span>
-        <button onClick={onNextDay}>Next day</button>
+        <button className="btn btn-secondary" onClick={onNextDay}>&gt;</button>
       </div>
 
       <button onClick={onTodayClicked}>Today</button>

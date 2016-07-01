@@ -5,46 +5,62 @@ import Helmet from 'react-helmet'
 import FlightTracker from 'src/lib/FlightTracker'
 import People        from 'src/lib/People'
 
+import { getFirebase } from 'src/lib/firebaseAdapter'
+
 import {
   DatePicker,
   FlightsForm,
   OldLeaderboard,
+  UserPicker,
 } from 'src/components'
 
 
-export const FlightTrackerPage = React.createClass({
-  getInitialState() {
-    return {
+export class FlightTrackerPage extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
       entryDate: moment(),
       person: People.get(0),
     }
-  },
+  }
 
-  onEntryDateChanged(date) {
-    this.setState({
-      entryDate: date,
+  componentDidMount() {
+    getFirebase().auth().onAuthStateChanged(user => {
+      if (user) {
+        getFirebase().database()
+          .ref(`users/${user.uid}`)
+          .on('value', snapshot => {
+            this.setState({ user: snapshot.val() })
+          })
+      }
     })
-  },
+  }
 
-  onFlightsChanged(flights) {
+  onEntryDateChanged = (entryDate) => {
+    this.setState({ entryDate })
+  }
+
+  onFlightsChanged = (flights) => {
     this.state.person.flightsClimbed.set(this.state.entryDate, flights)
     this.setState({
       person: this.state.person,
     })
-  },
+  }
 
-  onPersonChanged(event) {
-    let personId = parseInt(event.target.value)
-    this.setState({
-      person: People.get(personId),
-    })
-  },
+  onPersonChanged = (person) => {
+    this.setState({ person })
+  }
 
-  entryForm() {
-    if (!this.state.person) return
+  render() {
     return (
-      <div>
-        <h2>{this.state.entryDate.format('dddd')}</h2>
+      <div id="FlightTrackerContainer" className="container">
+        {<Helmet title="Home" />}
+
+        <h1>StepUp</h1>
+
+        {this.state.user && <p>Hello {this.state.user.name}!</p>}
+        <UserPicker user={this.state.person} onChange={this.onPersonChanged} />
+
         <DatePicker
           selected={this.state.entryDate}
           onChange={this.onEntryDateChanged}
@@ -54,28 +70,9 @@ export const FlightTrackerPage = React.createClass({
           value={this.state.person.flightsClimbed.get(this.state.entryDate)}
           onChange={this.onFlightsChanged}
         />
-      </div>
-    )
-  },
 
-  render() {
-    return (
-      <div id="FlightTrackerContainer">
-        {<Helmet title='Home'/>}
-        <h1>StepUp</h1>
-
-        <label htmlFor="change-user">Switch user: </label>
-        <select id="change-user" value={this.state.person.id} onChange={this.onPersonChanged}>
-          <option>Switch user…</option>
-          {People.map(person =>
-            <option key={person.id} value={person.id}>{person.fullName}</option>
-          )}
-        </select>
-
-        {this.entryForm()}
-
-        <OldLeaderboard people={People} flightTracker={FlightTracker}/>
+        <OldLeaderboard people={People} flightTracker={FlightTracker} />
       </div>
     )
   }
-})
+}
