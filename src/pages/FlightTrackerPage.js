@@ -29,6 +29,8 @@ export class FlightTrackerPage extends React.Component {
           .on('value', snapshot => {
             this.setState({ user: Object.assign({}, snapshot.val(), { uid: user.uid }) })
             this.getFlightsClimbed(this.state.user.uid, this.state.entryDate.format('YYYY-MM-DD'))
+            this.state.person.homeFloor = this.state.user.homeFloor
+            this.setState({ person: this.state.person })
           })
       }
     })
