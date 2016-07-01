@@ -1,7 +1,7 @@
 import React from 'react'
 import { Login } from './Login'
 import { Register } from './Register'
-import { getFirebase } from 'src/lib/firebaseAdapter'
+import { Logo } from 'src/components'
 
 export class LoginRegister extends React.Component {
   constructor(props) {
@@ -18,6 +18,13 @@ export class LoginRegister extends React.Component {
   render() {
     return (
       <div>
+        <header>
+          <nav className="navbar navbar-light navbar-full">
+            <div className="container">
+              <Logo />
+            </div>
+          </nav>
+        </header>
         <div className="container">
           {(this.state.login) ? <Login toggle={this.toggle} /> : <Register toggle={this.toggle} />}
         </div>

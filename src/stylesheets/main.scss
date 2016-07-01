@@ -1,4 +1,21 @@
 $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 
+$red:           #BD1550;
+$orange:        #E97F02;
+$burnt-red:     #490A3D;
+$yellow:        #F8CA00;
+$gray-lightest: #F8F8F8;
+
+$brand-primary: $burnt-red;
+
 @import '../../node_modules/bootstrap/scss/bootstrap';
 
+
+header .navbar {
+  border-bottom: 1px solid $burnt-red;
+  padding: 10px 0;
+}
+
+body {
+  background: $gray-lightest;
+}

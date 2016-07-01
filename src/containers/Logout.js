@@ -24,7 +24,7 @@ export class Logout extends React.Component {
 
   render() {
     return (
-      <a onClick={this.signOut}>Sign Out</a>
+      <a className="btn btn-link pull-xs-right" onClick={this.signOut}>Sign Out</a>
     )
   }
 }
