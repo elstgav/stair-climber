@@ -20,7 +20,7 @@ module.exports = _.extend({}, base, {
       'process.env': {
         NODE_ENV: JSON.stringify('development'),
       },
-    }),
+    })
   ],
 
   module: {
