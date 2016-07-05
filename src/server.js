@@ -19,7 +19,7 @@ import { match, RouterContext } from 'react-router'
 
 import routes from 'src/routes'
 import Html from 'src/lib/Html'
-import { signIn, logOut } from 'src/lib/server/account'
+import { signIn, logOut, preLoadFlightTrackerData } from 'src/lib'
 import { DataWrapper } from 'src/components'
 
 const app = new Express()
@@ -42,10 +42,13 @@ app.use(Express.static(path.resolve(__dirname, '../public')))
 app.post('/account/login', signIn)
 
 app.get('/account/logout', logOut)
+app.get('/', preLoadFlightTrackerData)
 
 // Server Side Rendering based on routes matched by React-router.
 app.use((req, res) => {
   console.log(`receiving request: ${req.url}`)
+  const data = req.data || {}
+
   const currentUser = req.session.currentUser
 
   if (currentUser && req.url === '/account') {

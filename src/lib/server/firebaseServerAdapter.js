@@ -8,6 +8,7 @@ const getFirebase = () => {
         clientEmail: process.env.CEMAIL,
         privateKey: process.env.PKEY,
       },
+      databaseURL: "https://stepup-e9532.firebaseio.com",
     })
   }
   return firebase
